@@ -60073,7 +60073,7 @@ class P60 extends Te {
         const s = document.createElement("video");
         s.crossOrigin = "anonymous";
         let n = t.video;
-        eT ? n = QS + t.video : n = "./videos/" + n, cU ? s.src = n.replace(".mp4", ".webm") : s.src = n, s.loop = !0, s.muted = !0, s.setAttribute("playsinline", ""), s.playsInline = !0;
+        eT ? n = QS + t.video : n = "./videos/" + n, cU && t.video !== "akira.mp4" ? s.src = n.replace(".mp4", ".webm") : s.src = n, s.loop = !0, s.muted = !0, s.setAttribute("playsinline", ""), s.playsInline = !0;
         const a = new EA(s);
         let o = !1;
         return s.addEventListener("canplay", () => {
@@ -65506,7 +65506,7 @@ class Hu0 extends pe {
                     side: 2
                 })), this.decorativeVideo.scale.set(Bx * zu0, Bx, Bx), this.decorativeVideo.position.set(-550, this.decorativeVideo.scale.y * .5, -350), this.decorativeVideo.rotation.set(0, Math.PI * .5, 0), this.add(this.decorativeVideo), t.play().catch(console.warn), i = !0
             });
-            let s = "derivative.mp4";
+            let s = "trial billboard.mp4";
             eT ? s = QS + s : s = "./videos/" + s, cU && (s = s.replace(".mp4", ".webm")), t.src = s, t.load()
         }
     }
