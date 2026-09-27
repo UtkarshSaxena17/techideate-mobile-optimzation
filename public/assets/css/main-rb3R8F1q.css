@@ -2925,3 +2925,34 @@ p[data-v-b9070ebd], h2[data-v-b9070ebd], h3[data-v-b9070ebd], a[data-v-b9070ebd]
 .bar-wrapper .bar-content[data-v-32541cec] { background-color: #7fd4ff; }
 .bar-wrapper.selected .bar-content[data-v-32541cec] { background-color: #00a8ff; box-shadow: 0 0 14px rgba(0, 168, 255, .6); }
 h3[data-v-32541cec], h3 span[data-v-32541cec], .title-notification-container * { color: #001a33; text-shadow: none; }
+
+/* ===== TECHIDEATE About page layout ===== */
+#about .title-container[data-v-b9070ebd] {
+    top: clamp(130px, 17vh, 170px); left: 50px; margin-left: 0; right: 50px; z-index: 101;
+}
+#about #smsy[data-v-b9070ebd] { display: none; }
+#about .title-container h2[data-v-b9070ebd] {
+    font-size: 12px; line-height: 14px; letter-spacing: .32em; margin: 0 0 10px; color: #7fd4ff;
+}
+#about .big-title[data-v-b9070ebd] {
+    font-size: clamp(44px, min(7vw, 12vh), 120px); line-height: 1; letter-spacing: .03em; font-weight: 700;
+}
+#about .title-container h3[data-v-b9070ebd] {
+    text-align: left; font-size: 13px; letter-spacing: .32em; margin-top: 14px; color: #eaf7ff;
+}
+#about #about-text-container[data-v-b9070ebd] {
+    width: auto; left: 0; right: auto; margin-left: 50px; max-width: min(1150px, calc(100vw - 420px)); margin-bottom: 40px;
+    display: flex; flex-wrap: wrap; gap: 0 60px; align-items: flex-start;
+}
+#about .about-text-container-half[data-v-b9070ebd] { width: auto; flex: 1 1 420px; max-width: 540px; min-width: 0; margin-left: 0 !important; }
+#about #about-text-container p[data-v-b9070ebd] {
+    font-size: clamp(14px, 1.05vw, 17px); line-height: 1.6; margin-bottom: 18px; font-weight: 500;
+}
+#about .links[data-v-b9070ebd] { flex-basis: 100%; width: auto; margin-top: 10px; }
+#about .links a[data-v-b9070ebd] { font-size: 18px; margin-right: 22px; color: #00a8ff; }
+#about .credits[data-v-b9070ebd] { bottom: 100px; right: 50px; opacity: .55; }
+#about .credits a[data-v-b9070ebd], #about .credits h2[data-v-b9070ebd] { font-size: 11px; line-height: 15px; }
+@media (max-height: 760px) {
+    #about #about-text-container p[data-v-b9070ebd] { font-size: 13px; line-height: 1.5; margin-bottom: 10px; }
+    #about .big-title[data-v-b9070ebd] { font-size: clamp(36px, min(6vw, 10vh), 90px); }
+}
