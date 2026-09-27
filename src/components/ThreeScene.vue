@@ -12,7 +12,7 @@
             <div data-v-0e4014e1 class="title-notification-container">
               <h1 data-v-0e4014e1 class="bold notification"></h1>
             </div>
-            <h3 data-v-0e4014e1 class="regular"> ノティフィケーション </h3>
+            <h3 data-v-0e4014e1 class="regular"> NOTIFICATION </h3>
             <h2 data-v-0e4014e1 class="medium anime"></h2>
           </div>
         </div>
