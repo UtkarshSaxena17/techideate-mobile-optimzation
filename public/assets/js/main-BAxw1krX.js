@@ -23003,7 +23003,8 @@ Reason: ${e.reason}`), N0(t), this._isDeviceLost = !0
         this._initialized === !1 && await this.init(), this._textures.updateTexture(e)
     }
     initTexture(e) {
-        this._initialized === !1 && x0("Renderer: .initTexture() called before the backend is initialized. Try using .initTextureAsync() instead."), this._textures.updateTexture(e)
+        if (this._initialized === !1 || this._textures == null) return;
+        this._textures.updateTexture(e)
     }
     copyFramebufferToTexture(e, t = null) {
         if (t !== null)
@@ -29542,7 +29543,7 @@ var dU = !1,
     };
 const V3 = [{
         color: new $0(2368548),
-        emissive: new $0(16711680),
+        emissive: new $0(49151),
         faceIndex: 0
     }, {
         color: new $0(2003199),
@@ -59741,7 +59742,7 @@ class M4 {
         this.originalText = e, this.originalLength = this.originalText.length, this.countBack = this.originalLength, this.countLimit = this.originalLength, this.renderEvent = this.render.bind(this), this.newlinePositions = [];
         for (let i = 0; i < this.originalText.length; i++) this.originalText[i] === `
 ` && this.newlinePositions.push(i);
-        this.callback = t.callback || (() => {}), this.characterType = t.characterType || "normal", this.katakana = ["ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク", "ケ", "コ", "サ", "シ", "ス", "セ", "ソ", "タ", "チ", "ツ", "テ", "ト", "ナ", "ニ", "ヌ", "ネ", "ノ", "ハ", "ヒ", "フ", "ヘ", "ホ", "ヤ", "ユ", "ヨ", "ラ", "リ", "ル", "レ", "ロ", "ワ", "ン", "ガ", "ギ", "グ", "ゲ", "ゴ", "ザ", "ジ", "ズ", "ゼ", "ゾ"], this.normalChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", '"', "'", "<", ">", ",", ".", "?", "/"], this.currentText = "", this.callback(this.currentText)
+        this.callback = t.callback || (() => {}), this.characterType = t.characterType || "normal", this.katakana = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], this.normalChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", '"', "'", "<", ">", ",", ".", "?", "/"], this.currentText = "", this.callback(this.currentText)
     }
     setNewText(e) {
         this.originalText = e, this.originalLength = this.originalText.length, this.countBack = this.originalLength, this.countLimit = this.originalLength, this.newlinePositions = [];
@@ -59829,7 +59830,7 @@ class T60 extends pe {
     }
     async initText(t) {
         this.localData = t;
-        const i = new Z0(16711714),
+        const i = new Z0(15398911),
             s = [i.r, i.g, i.b];
         await this.createFonts(s), this.setupRaycastMeshes()
     }
@@ -59864,7 +59865,7 @@ class T60 extends pe {
         t.mesh.geometry.computeBoundingBox(), t.mesh.position.x = -t.mesh.geometry.boundingBox.min.x
     }
     setupRaycastMeshes() {
-        this.raycastMeshes = [], this.createRaycastMesh(this.infosFont, "infos", 16711714), this.createRaycastMesh(this.visitFont, "visit", 16711714)
+        this.raycastMeshes = [], this.createRaycastMesh(this.infosFont, "infos", 43263), this.createRaycastMesh(this.visitFont, "visit", 43263)
     }
     createRaycastMesh(t, i, s) {
         const n = t.mesh.geometry.boundingBox,
@@ -60005,7 +60006,26 @@ class T60 extends pe {
         document.body.classList.remove("glhover")
     }
 }
-const M60 = JSON.parse(`[{"url":"https://clonex.rtfkt.com/","classname":"light","title":"Clonex","subtitle":"Metaverse Builder w/ @RTFKT","tags":"[ WebGL / PFP project / Light Source ] ","description":"Shading Ninja / Creative coder / Murakami / 🥷🏼","video":"akira.mp4","short":"Clonex","infos":{"text":"Developed Real-Time / custom shaders / custom post-processing for Clonex, RTFKT's premium NFT avatar collection that successfully sold 20,000 avatar vials. Focused on performance optimization to deliver smooth 3D rendering experiences for users. Contributed to the technical foundation of a successful NFT marketplace that became a leading player in the digital collectibles space."}},{"url":"https://samsy.ninja/nocompute/index.html","classname":"light","title":"Jiometory \\n No Compute","subtitle":"Long Form Generative art","tags":"[ WebGL / Long Form Generative art ] ","description":"Artblock / NFT / crypto ","video":"jio.mp4","short":"Jiometory","infos":{"text":"Random and anarchy, chaos and structure. Jiometory No Compute is a living motion experimental study—a contemplative geometry organism that grows infinitely. Long form generative art collection of 1,024 unique pieces, curated on ArtBlocks, explores the boundaries between order and disorder through advanced WebGL and shader programming."}},{"url":"https://v2.oncyber.io/play/R35GnWjTLs5hGMCyjuC7?draft=true","classname":"light","title":"OnCyber","subtitle":"World Editor & performances w/ @oncyber","tags":"[ Real time Metaverse Editor ] ","description":"Metaverse Maker / Visual Shading 🦄","video":"oncyber.mp4","short":"onCyber","infos":{"text":"Technical 3D leader for the development of Oncyber, a revolutionary 3D creation engine that combines the simplicity of a website builder with the power of a full game engine, running entirely in browsers. Led initiatives in performance optimization, shader development, 3D architecture design, avatar systems, and cloud pipeline optimization for seamless 3D asset delivery. Spearheaded the technical vision for making professional-grade 3D content creation accessible through web technologies."}},{"url":"https://vimeo.com/444254918","classname":"light","title":"TomorrowLand","subtitle":"WebGL map & Festival @Dogstudio","tags":"[ WebGL / Debug god tools / 1 million viewers ] ","description":"WebGL Tech Director / Creative coder / performances advocate","video":"tmls.mp4","prices":"Fwa","custom":{"text":"case","link":"https://thefwa.com/cases/tomorrowland-around-the-world"},"short":"TomrrwLand","infos":{"text":"3D Technical Director for TomorrowLand's virtual festival experience at Dogstudio. Architected and built scalable WebGL platform capable of handling 1 million viewers during live events. Developed comprehensive pipeline optimizations, real-time debug tools, and performance monitoring systems to ensure seamless delivery of the immersive 3D festival experience. Implemented dynamic day and night cycles, advanced bloom effects, and cinematic sequences to enhance the visual storytelling. Led technical 3D architecture decisions for one of the largest virtual music festival platforms."}},{"url":"https://virtualexpodubai.com/","classname":"light","title":"World Exposition \\n Dubai 2020","subtitle":"WebGL on site replica w/ @Dogstudio","tags":"[ WebGL / Debug god tools / World Event ] ","description":"WebGL Tech Director / Creative coder / performances advocate","video":"dubai.mp4","prices":"Fwa","custom":{"text":"case","link":"https://dogstudio.co/cases/virtual-expo-dubai-2020/"},"short":"World Expo","infos":{"text":"3D Technical Director (8 months) - Led digital replica creation of World Expo Dubai 2020 at Dogstudio. Directed WebGL team to recreate 200+ pavilions from 192 countries with automated optimization pipelines, advanced instancing, and dynamic day/night cycles. Delivered virtual experience for 2M+ viewers during inauguration."}},{"classname":"light","title":"CryptoPunk \\nSneakers Metaverse","subtitle":"NFT-drop / RTFKT Design studio","tags":"[ Voxels / Glitches / cheat codes / WebGL ] ","description":"WebGL architecture & development / Shader ninja / week-end RIP.","video":"cryptopunk.mp4","short":"Cryptopunk","url":"https://rtfkt.com/project/punksProject","infos":{"text":"WebGL architect and developer for RTFKT's groundbreaking Punks Project, the first token-gated sneaker customization platform. Built an exclusive WebGL experience where only verified CryptoPunk holders could access and generate 10,000 unique digital sneakers, each procedurally designed to match their Punk's traits. Developed advanced shader systems for voxel rendering, glitch effects, and interactive 3D sneaker visualization."}},{"classname":"light","title":"NAOZ \\nPersistent \\nDigital Venue","subtitle":"Digital Entertainment Venue","tags":"[ WebGL / Debug god tools / Festival Engine ] ","description":"WebGL Tech Director & development / Shader writer","video":"naoz.mp4","short":"Naoz","infos":{"text":"WebGL Technical Director and lead GL developer for NAOZ, a year-round persistent digital entertainment venue built for Tomorrowland at Dogstudio. Architected a comprehensive WebGL festival engine featuring cinematic depth of field through painted blurred skyboxes, advanced glass shaders with dual reflection maps, and dynamic lighting systems. Developed custom browser-based editing tools for real-time camera positioning and lighting adjustments."},"url":"https://www.awwwards.com/sites/naoz-the-digital-venue-1"},{"url":"https://quadplex80.com/","classname":"light","title":"Above the Clouds \\n 111 W 57","subtitle":"Billionaires row - Outpost Agency","tags":"[ Cloud Instance sorter & ethereal env ] ","description":"WebGL Creative Development / Shader & performances","video":"output55.mp4","short":"Clouds","infos":{"text":"WebGL creative developer for luxury penthouse marketing website on Manhattan's prestigious Billionaires Row, developed for Outpost Agency. Created an experience showcasing penthouses overlooking Times Square through cloud rendering and seamless transitions. Built a sophisticated cycling scroll system that transports users through volumetric cloud instances, from ethereal sky environments into architectural visualization of the 111 W 57th Street building."}},{"url":"https://heyhush.com/work/capital-one-workplace-brand-visualizations/","classname":"light","title":"Capital One","subtitle":"Dataviz / Hush design agency","tags":"[ True 16K webgl backbuffer / gigantic walls / custom browser ] ","description":"WebGL architecture & development / Creative technologist / performances advocate","video":"capital.mp4","custom":{"text":"watch video","link":"https://vimeo.com/267591039"},"short":"Capital One","infos":{"text":"WebGL architect and creative technologist for Capital One's 5,000 sq ft digital art installation at their Tysons, Virginia campus with Hush design agency. Custom Chromium browser build & WebGL system rendering true 16K resolution across gigantic LED walls for 1,000+ daily visitors. Developed geometric visualization engine representing 52,000 employees evolving from individual to unified movements. Created performance-optimized pipeline supporting massive displays with smooth real-time data visualization updates."}},{"url":"https://stonewallforever.org/","classname":"light","title":"Google \\n Stonewall Forever","subtitle":"Procedural Monument / LGBT Center ","tags":"webgl / es6 / postprocessing / glsl","description":"Creative Tech / Webgl Arch / 3D Lead / Perf advocate","video":"lgbt.mp4","prices":"Fwa / Awwward","short":"StoneWall","infos":{"text":"Creative technologist and WebGL architect for Google's Stonewall Forever digital archive at Stink Studios, commemorating the 50th anniversary of the Stonewall Riots. Built a real-time scrolling archive platform featuring procedural monument generation and immersive storytelling for the NYC LGBT Community Center. Developed advanced WebGL architecture, custom post-processing pipelines, and GLSL shaders to create dynamic visual narratives celebrating LGBTQ+ history and activism."}},{"url":"http://samsy.ninja/tiltbrush/index.html","classname":"light","title":"TiltBrush WebAR","subtitle":"Reverse Engineering / TiltBrush / Augmented Reality","tags":"webgl / es6 / postprocessing / glsl","description":"Shading ninja / Personal","video":"tiltbrush.mp4","prices":"","short":"TiltBrush","infos":{"text":"Personal reverse engineering project recreating Google's TiltBrush VR painting application for WebGL and Augmented Reality environments. Meticulously analyzed and reconstructed all original TiltBrush brushes, particle systems, and visual effects through shader programming and instanced rendering techniques. Implemented instanced rendering systems for efficient particle management and post-processing pipelines replicating TiltBrush's signature aesthetic. Successfully translated VR-native painting mechanics to web-based AR interaction paradigms."}},{"url":"https://dogstudio.co/","classname":"light","title":"Dog Interactivity","subtitle":"WebGL Nav / Matcap Skinning / Dogstudio","tags":"webgl / es6 / draco / skinning","description":"Webgl Arch","video":"dogcut.mp4","prices":"Fwa / Awwward","short":"DogStudio","infos":{"text":"WebGL Developer for Dogstudio's iconic animated dog website navigation system. Implemented skinned custom matcap transition shading system for the studio famous 3D dog mascot, creating seamless material transitions during user interactions. Developed comprehensive skinning pipeline with Draco compression for optimized model delivery and smooth skeletal animations. Built live in-browser camera editor featuring keyframe-based transition system, enabling real-time adjustment of navigation cinematics and camera movements."}},{"title":"Google \\n Qalam Creator","subtitle":"Tilt Brush Reverse Engineering / Stink Studios","tags":"webgl / glsl / calligraphy","description":"WebGL advocate / tiltbrush workflow designer","video":"qalam.mp4","url":"https://www.stinkstudios.com/work/qalam","classname":"light","prices":"Fwa","custom":{"text":"case study","link":"https://medium.com/@stinkstudios/creating-qalam-d016a0a52d56"},"short":"Qalam","infos":{"text":"WebGL advocate and TiltBrush workflow designer for Google's Qalam Creator at Stink Studios, celebrating Ramadan through interactive Arabic calligraphy. Reverse engineered TiltBrush's 3D painting system to faithfully recreate artwork by iconic Arabic artists like eL Seed in an accessible web platform. Developed custom conversion pipeline reducing high-end VR file sizes for mobile-friendly delivery while preserving the authentic qualities of each brush stroke."}},{"url":"https://www.youtube.com/watch?v=AxsxQkQimmE&ab_channel=epok-tech","classname":"light","title":"HERE Vision","subtitle":"Mobile webVR / 3D Sequencer / B-Reel","tags":"webgl / es6 / postprocessing / glsl","description":"VR Lead dev / Shading ninja / Stereoscopic rendering","video":"here.mp4","prices":"","short":"Here Vision","infos":{"text":"VR Lead Developer for HERE's immersive documentary experience at B-Reel, showcasing the company's technological journey. Architected WebVR platform with stereoscopic rendering for mobile headsets and built real-time VR sequencer enabling dynamic UI overlays within the VR experience. Developed performance-optimized pipeline supporting documentary content delivery and interactive 3D line engine visualization, seamlessly blending footage with interactive environments through custom GLSL shaders and post-processing effects."}},{"title":"Kikk AR \\n Festival","subtitle":"Augmented Reality Exhibition","tags":"ARKit / webgl","description":"Co-conceptor / tech director & artist / Dogstudio","video":"kikk2.mp4","url":"https://dogstudio.co/cases/kikk-ar/","classname":"light","prices":"","short":"Kikk Fest","infos":{"text":"Co-directed and developed city-wide augmented reality art exhibition for KIKK Festival 2018 in Namur, Belgium, featuring 7 exclusive generative art pieces by world-class creative developers. Architected custom iOS and Android applications with ARKit/ARCore integration and embedded WebGL rendering engine. Engineered QR code-based calibration system for pixel-perfect AR registration across urban environments and built cross-platform pipeline supporting complex graphics within AR space.'"}},{"title":"Arkade London","subtitle":"Audio Reactive Art","tags":"webgl / es6 / postprocessing / glsl","description":"Initiator / Conceptor / webgl & front end developer","video":"arkade.mp4","url":"http://arkade.samsy.ninja","classname":"light","prices":"Fwa / Awwward / Chrome Experiment","custom":{"text":"watch video","link":"https://vimeo.com/175949917"},"short":"Arkade","infos":{"text":"Initiator and conceptor of Arkade, a WebGL audio reactive experiment enabling real-time VJ visual performance through keyboard triggers. Developed comprehensive audio analysis engine with frequency spectrum mapping to dynamic visual parameters, creating responsive generative art system for live performance environments. Built modular shader library supporting multiple visual modes including geometric transformations, and post-processing effects synchronized to audio input."}},{"title":"Intangible Matter","subtitle":"Webgl Artwork for Chanel / Stink Studios","tags":"webgl / threejs / react","description":"Webgl Shader advocate, Make up and optimiser","video":"chanel.mp4","classname":"light","prices":"Fwa / Awwward","url":"https://www.youtube.com/watch?v=y7hTuqxq14Y&ab_channel=i-D","custom":{"text":"watch video","link":"https://www.youtube.com/watch?v=y7hTuqxq14Y"},"short":"Intangible","infos":{"text":"WebGL shader advocate and performance optimizer for Chanel's luxury digital artwork at Stink Studios. Developed sophisticated interactive system featuring liquid simulations, glass interactions, and cinematic transitions creating abstract, flowing forms that respond to user input. Built performance-optimized rendering pipeline using Three.js, enabling smooth real-time simulations while maintaining brand-appropriate visual refinement.'"}},{"title":"In-form.io","subtitle":"Prototype WIP ","tags":"webgl / backbone / postprocessing / glsl","description":"Initiator / Conceptor / webgl & front end developer","video":"inform.mp4","classname":"light","prices":"","short":"Inform","infos":{"text":"Initiator and conceptor of In-form.io, a graduation project exploring personal data visualization through WebGL. Developed comprehensive data collection system harvesting mobile sensor information including gyroscope readings, pedometer data, location tracking, and media consumption patterns. Built dynamic visualization engine that evolves and grows over time, creating unique personal data sculptures that reflect individual daily behaviors and digital footprints."}},{"title":"ARCharge","subtitle":"A webAR demo","tags":"Experiment / postprocessing / webAR / lines","description":"3D AR alone developer","video":"supercharge.mp4","classname":"light","prices":"","short":"SuperCharge","infos":{"text":"3D AR developer for Nexus Studios London creating experimental WebAR application featuring advanced line system engine with bloom alpha graphics. Built native WebGL AR experience demonstrating real-time line rendering capabilities with sophisticated post-processing effects including dynamic bloom and alpha blending. Developed custom line generation algorithms creating responsive geometric patterns that interact with real-world environments through AR tracking."}},{"title":"Speak to go","subtitle":"A googleVR project","tags":"webgl / speech-recognition / google street view","description":"Creative and Prototyper","video":"webvro.mp4","url":"https://webvrexperiments.com/experiment/speak-to-go","classname":"light","prices":"WebVR Chrome experiment","short":"Speak to go","infos":{"text":"Creative and prototyper for Google Creative Lab London developing voice-controlled WebVR travel application. Built innovative VR experience combining WebVR, Web Speech API, and Google Street View 360° imagery, enabling users to verbally navigate to any global location instantly. Developed seamless integration between speech recognition and immersive VR environments, allowing natural language commands like 'I'm feeling lucky' for spontaneous destination discovery.'"}},{"title":"Sonoran's Valley","subtitle":"3D real time desert storm","tags":"webgl / speech-recognition / google street view","description":"Initiator / Conceptor / Lead developer","video":"sonorans.mp4","classname":"light","prices":"Fwa / Awwward / Chrome experiment / Digg / Dite inspire","short":"Sonorans","infos":{"text":"Initiator, conceptor, and lead developer of Sonoran's Valley, a creative WebGL hack transforming any Google Street View location into an immersive desert storm environment. Developed innovative image processing pipeline that analyzes Street View panoramas and applies real-time environmental transformation, converting urban landscapes, forests, and coastlines into dynamic desert storm scenes with sandstorms, atmospheric effects, and dramatic lighting."}},{"title":"The Legend of Icecoon","subtitle":"Christmas Experiment / Journey in Diamonds Cave","tags":"webgl / Mobile / postprocessing / glsl / Optmizer","description":"Initiator / Conceptor / 3D Dev","video":"xmas.mp4","classname":"light","prices":"Fwa","short":"Icecoon","infos":{"text":"Initiator, conceptor, and 3D developer of The Legend of Icecoon, a Christmas-themed WebGL experiment taking users on an immersive journey through a magical diamond cave tunnel. Developed endless tunnel navigation system with dynamic particle effects, advanced post-processing, and portal transition graphics creating a mystical underground adventure optimized for mobile devices."}},{"title":"Daedelus Labyrinths","subtitle":"Audio reactive GIF Generator","tags":"webgl / Mobile / postprocessing / glsl / webaudio","description":"Tech Director / 3D dev / WebAudio","video":"daedelus.mp4","classname":"light","prices":"The Creator Projects","custom":{"text":"watch video","link":"https://www.youtube.com/watch?v=onMRZ9N59-0"},"short":"Daedelus","infos":{"text":"Technical Director and 3D developer for Daedelus/Ninja Tunes creating innovative audio reactive GIF generation platform. Built comprehensive WebAudio analysis engine that transforms music into dynamic visual patterns, generating unique animated GIFs synchronized to audio frequency spectrum and beat detection. Developed real-time rendering pipeline converting complex WebGL visualizations into shareable GIF formats for social media distribution."}},{"title":"Parallel studio","subtitle":"Indie 360 video game studio portfolio","tags":"webgl / 360 / mobile","description":"Tech lead / Front developer","video":"parallel.mp4","url":"http://parallel-studio.com","classname":"light","prices":"","short":"Parallel","infos":{"text":"Developer for Parallel Studio's WebGL portfolio showcasing their independent 360° video game development work. Built immersive 3D portfolio experience featuring rotating slider navigation system and advanced post-processing effects to present game projects in dynamic, interactive format. Developed performance-optimized rendering pipeline supporting smooth 360° rotations and seamless transitions between portfolio sections."}},{"title":"Lightizon","subtitle":"Real time light painting installation","tags":"openframeworks / opengl / glsl","description":"Academic project director / Lead developer","video":"lightizon.mp4","url":"https://www.youtube.com/watch?v=tbQBR1gyNGo","classname":"light","short":"LightizOn","infos":{"text":"Academic project director and lead developer for LightizOn, an interactive real-time light painting installation built with OpenFrameworks and C++. Developed innovative computer vision system capturing light sources in real-time and creating long exposure effects through custom GLSL shaders and OpenGL rendering. Engineered dynamic light trail generation that transforms live video input into artistic light painting compositions, eliminating the need for traditional camera long exposure techniques."}}]`),
+const M60 = (function () {
+    var fallback = JSON.parse(`[{"url": "/events", "classname": "light", "title": "HackSprint \\n 24", "subtitle": "24-hour flagship hackathon", "tags": "[ DAY 1-2 / 24 HRS / TEAMS OF 2-4 ]", "description": "Build / Ship / Demo", "video": "akira.mp4", "short": "HackSprint", "infos": {"text": "Our flagship 24-hour hackathon. Pick a real-world problem statement, form a team of 2 to 4, and build a working prototype overnight. Mentors are on the floor all night, and the final demos are judged by industry experts. Food, power and Wi-Fi are on us."}}, {"url": "/events", "classname": "light", "title": "Code Clash", "subtitle": "Competitive programming contest", "tags": "[ DAY 1 / 3 HRS / SOLO ]", "description": "Algorithms / Speed / Logic", "video": "akira.mp4", "short": "Code Clash", "infos": {"text": "A timed competitive programming contest with problems ranging from warm-up to brutal. Solve as many as you can in three hours on a live leaderboard. Open to all years, and any language is allowed."}}, {"url": "/events", "classname": "light", "title": "RoboWars", "subtitle": "Robot combat arena", "tags": "[ DAY 2 / ARENA / TEAMS ]", "description": "Hardware / Combat / Control", "video": "akira.mp4", "short": "RoboWars", "infos": {"text": "Design, build and drive a combat robot into the arena. Knockout rounds, weight-class rules and a crowd that gets loud. Bring your own bot and check the rulebook for size and weapon limits."}}, {"url": "/events", "classname": "light", "title": "Capture \\n The Flag", "subtitle": "Cybersecurity challenge", "tags": "[ DAY 2 / 6 HRS / TEAMS OF 3 ]", "description": "Security / Crypto / Forensics", "video": "akira.mp4", "short": "CTF", "infos": {"text": "A jeopardy-style CTF covering web, crypto, reverse engineering and forensics. Find the flags, climb the scoreboard and learn how attackers think. Beginner-friendly tracks are included."}}, {"url": "/events", "classname": "light", "title": "AI Arena", "subtitle": "Machine learning challenge", "tags": "[ DAY 2 / 5 HRS / TEAMS OF 2 ]", "description": "AI / ML / Data", "video": "akira.mp4", "short": "AI Arena", "infos": {"text": "You get a dataset and a brief at the start. Train, tune and explain a model before time runs out. Scoring balances accuracy with how well you can justify your approach to the judges."}}, {"url": "/events", "classname": "light", "title": "Design Dash", "subtitle": "UI / UX design sprint", "tags": "[ DAY 3 / 4 HRS / SOLO OR DUO ]", "description": "Design / UX / Prototype", "video": "akira.mp4", "short": "Design Dash", "infos": {"text": "A rapid product design sprint. Get a user problem, research it, wireframe it and present a clickable prototype. Judged on clarity, usability and craft."}}, {"url": "/events", "classname": "light", "title": "IdeaForge", "subtitle": "Startup pitch & ideathon", "tags": "[ DAY 3 / PITCH / TEAMS ]", "description": "Ideate / Pitch / Launch", "video": "akira.mp4", "short": "IdeaForge", "infos": {"text": "The heart of TECHIDEATE: turn an idea into a pitch. Teams present to a panel of founders and investors, with five minutes to pitch and five for questions. The best ideas get incubation support."}}, {"url": "/events", "classname": "light", "title": "Tech Talks", "subtitle": "Speaker sessions & workshops", "tags": "[ DAY 1-3 / MAIN AUDITORIUM ]", "description": "Talks / Workshops / Networking", "video": "akira.mp4", "short": "Tech Talks", "infos": {"text": "Sessions and hands-on workshops from engineers, researchers and founders across the three days. Open to everyone, no registration needed. Just walk in."}}]`);
+    try {
+        var x = new XMLHttpRequest();
+        x.open("GET", "/screens/screens.json?v=" + Date.now(), !1), x.send(null);
+        if (x.status >= 200 && x.status < 300) {
+            var cfg = JSON.parse(x.responseText), m = (cfg.majorEvents || []).filter(function (e) { return e && e.name; });
+            if (m.length) {
+                var list = m.map(function (e) {
+                    var nm = String(e.name), t = nm.length > 11 && nm.indexOf(" ") > 0 ? nm.replace(" ", " \n ") : nm;
+                    return { url: e.registerUrl || "/events", classname: "light", title: t, subtitle: e.club || "",
+                        tags: e.tags || "[ " + (e.date || "") + " / " + (e.time || "") + " ]", description: e.description || "",
+                        video: e.video ? "/screens/" + e.video : "akira.mp4", short: e.short || nm, infos: { text: e.details || e.description || "" } };
+                });
+                return list;
+            }
+        }
+    } catch (err) { console.warn("[TECHIDEATE] events slider: using built-in list", err); }
+    return fallback;
+})(),
     A9 = {
         content: M60
     },
@@ -60073,7 +60093,7 @@ class P60 extends Te {
         const s = document.createElement("video");
         s.crossOrigin = "anonymous";
         let n = t.video;
-        eT ? n = QS + t.video : n = "./videos/" + n, cU && t.video !== "akira.mp4" ? s.src = n.replace(".mp4", ".webm") : s.src = n, s.loop = !0, s.muted = !0, s.setAttribute("playsinline", ""), s.playsInline = !0;
+        t.video.charAt(0) === "/" ? s.src = t.video : (eT ? n = QS + t.video : n = "./videos/" + n, cU && t.video !== "akira.mp4" ? s.src = n.replace(".mp4", ".webm") : s.src = n), s.loop = !0, s.muted = !0, s.setAttribute("playsinline", ""), s.playsInline = !0;
         const a = new EA(s);
         let o = !1;
         return s.addEventListener("canplay", () => {
@@ -60097,7 +60117,22 @@ class P60 extends Te {
             i && i.paused && (Y0 && Hb && (document.body.appendChild(i), i.style.width = "5px", i.style.height = "5px"), i.play().catch(console.warn))
         })
     }
+    initTeamVideo() {
+        if (this.teamVideo) return;
+        const s = document.createElement("video");
+        s.crossOrigin = "anonymous", s.src = (eT ? QS : "./videos/") + "akira.mp4", s.loop = !0, s.muted = !0, s.setAttribute("playsinline", ""), s.playsInline = !0;
+        const a = new EA(s);
+        a.minFilter = P1, a.magFilter = P1, a.generateMipmaps = !1, a.colorSpace = R1, this.teamVideo = s, this.teamTexture = a;
+        s.addEventListener("canplay", () => { a.loaded = !0, this.showTeamVideo() }), s.load()
+    }
+    showTeamVideo() {
+        if (!this.idleMode) return;
+        const t = this.teamTexture && this.teamTexture.loaded ? this.teamTexture : this.videoLoadingTexture;
+        t && (this.material.videoMap = t, this.material.videoMap2 = t, this.material.transition = 0, this.material.isTransitionning = 0);
+        this.activeVideoIndices.clear(), this.pauseInactiveVideos(), this.teamVideo && this.teamVideo.paused && this.teamVideo.play().catch(console.warn)
+    }
     updateVideoTextures(t, i) {
+        if (this.idleMode) { this._cacheCurrentIndex = t, this._cacheNextIndex = i; return }
         this.loadVideoIfNeeded(t), this.loadVideoIfNeeded(i);
         const s = this.videoTextureCache.get(t),
             n = this.videoTextureCache.get(i);
@@ -60107,10 +60142,10 @@ class P60 extends Te {
         switch (this.material.intensity = 1, t) {
             case T0.VOID:
             case T0.IDLE:
-                this.desactivateWork();
+                this.desactivateWork(), this.idleMode = !0, this.initTeamVideo(), this.showTeamVideo();
                 break;
             case T0.WORKS:
-                this.material.intensity = .5, this.activateWork(), this.text.show(this.currentProjectIndex, -1, !0);
+                this.idleMode = !1, this.teamVideo && this.teamVideo.pause(), this.material.intensity = .5, this.activateWork(), this.updateVideoTextures(this.currentProjectIndex, (this.currentProjectIndex + 1) % this.contentLength), this.text.show(this.currentProjectIndex, -1, !0);
                 break;
             case T0.INFO:
                 this.material.intensity = 1, this.text && (this.remove(this.text), this.text.reset())
@@ -60161,7 +60196,8 @@ class P60 extends Te {
         this.currentDirection = -1, this.transitionToProject(-1, s)
     }
     keyDown(t) {
-        t.code === "ArrowLeft" || t.code === "KeyQ" ? this.transitionToProject(-1) : (t.code === "ArrowRight" || t.code === "KeyD") && this.transitionToProject(1)
+        (t.code === "Home" || t.code === "End" || t.code === "PageUp" || t.code === "PageDown") && t.preventDefault && t.preventDefault();
+        t.code === "ArrowLeft" || t.code === "KeyQ" || t.code === "End" || t.code === "PageDown" ? this.transitionToProject(-1) : (t.code === "ArrowRight" || t.code === "KeyD" || t.code === "Home" || t.code === "PageUp") && this.transitionToProject(1)
     }
     addEvents() {
         this.updateEvent == null && (this.updateEvent = this.update.bind(this), Z.on(Y.PRE_UPDATE, this.updateEvent)), this.keydownEvent == null && (this.keyDownEvent = this.keyDown.bind(this), Z.on(Y.KEY_DOWN, this.keyDownEvent)), this.text.addEvents()
@@ -62650,7 +62686,7 @@ wM.attributes = {
         name: "emissiveAndFaceIndex",
         array: [],
         length: 4,
-        defaultValue: [1.5, 0, 0, 0]
+        defaultValue: [0, .65, 1.5, 0]
     }
 };
 wM.node = "colorNode";
@@ -63573,7 +63609,7 @@ class $_ extends Te {
                 x: 2,
                 y: 2
             },
-            particleColors: [16711731, 16777215, 3244287]
+            particleColors: [43263, 16777215, 3244287]
         }), this.particles.autoSpawn = !1, this.add(this.particles)
     }
     set active(e) {
@@ -64097,6 +64133,7 @@ class bu0 extends U8 {
     }
 }
 const Q0 = new bu0;
+window.__techiPlayer = () => Q0.avatar ? Q0.avatar.position : null;
 class _u0 extends Te {
     constructor() {
         super(), this.position.copy(Le), this.position.z += 30, this.position.y += -5, this.scale.set(8, 8, 8), this.visible = !1
@@ -64286,7 +64323,7 @@ class Ru0 {
         i0(this, "tempVec2", new b0);
         i0(this, "tempVec2Bis", new b0);
         this.source = t.source, this.distanceMode = t.distanceMode??"XYZ", this.interactionDistance = t.distance??15, this.distanceTarget = t.distanceTarget, this._currentAtlas = zN, this._mouse = new b0, this._raycaster = new Nw, this.mesh = e, this.instance = e.add(t), this.visible = !0, this.json = i, this.key = t.key, this.callback = t.callback, this.active = !0, this.frames = this.processFrames(this.json.frames), this.maxW = this.json.meta.size.w, this.maxH = this.json.meta.size.h, t.atlas ? this.atlas = t.atlas : this.atlas = zN, this.instance.opacity = t.opacity??1, Y0 && (this._mobileRaycastMesh = new mt(new M1(10, 10, 10), new l1({
-            color: 16711680,
+            color: 43263,
             transparent: !0,
             side: 2
         })), this._mobileRaycastMesh.visible = !1, this._mobileRaycastMesh.position.copy(t.position), Ke.add(this._mobileRaycastMesh)), this.active = !0
@@ -64451,7 +64488,7 @@ class Eu0 extends Te {
     }
 }
 const Nn = new Eu0;
-let Lu0 = new $0(16711731).convertSRGBToLinear();
+let Lu0 = new $0(43263).convertSRGBToLinear();
 class Cu0 extends Te {
     constructor() {
         super(), this.characterClosest = null, this.activatedProximityAction = !1, this.active = !1, this.updateActive = !1
@@ -64725,6 +64762,19 @@ class Bu0 {
     }
     constructItems(e, t = {}) {
         this.desinterleave(e.geometry), t.containsCollision && this.desinterleave(t.containsCollision.geometry);
+        if (/^slot_[VP]\d+_\d+_screen/.test(e.name)) {
+            const sp = e.name.split("_"), sid = sp[1], asp = parseInt(sp[2]) / 1e3, om = e.material.map,
+                big = sid[0] === "V" ? (Y0 ? 448 : 640) : (Y0 ? 512 : 768), cv = document.createElement("canvas");
+            asp >= 1 ? (cv.width = big, cv.height = Math.max(8, Math.round(big / asp))) : (cv.height = big, cv.width = Math.max(8, Math.round(big * asp)));
+            const cx = cv.getContext("2d");
+            cx.fillStyle = "#06122a", cx.fillRect(0, 0, cv.width, cv.height), cx.fillStyle = "#00a8ff", cx.textAlign = "center", cx.textBaseline = "middle",
+                cx.font = "900 " + Math.round(Math.min(cv.width, cv.height) * .16) + "px Arial", cx.fillText("TECHIDEATE", cv.width / 2, cv.height / 2, cv.width * .9);
+            const nt = new om.constructor(cv);
+            nt.flipY = !1, nt.colorSpace = om.colorSpace, nt.wrapS = om.wrapS, nt.wrapT = om.wrapT, nt.magFilter = om.magFilter, nt.minFilter = om.magFilter, nt.generateMipmaps = !1, nt.needsUpdate = !0;
+            e.material = e.material.clone(), e.material.map = nt;
+            window.__techiSlots = window.__techiSlots || {}, window.__techiSlots[sid] = { id: sid, aspect: asp, texture: nt, canvas: cv, ctx: cx };
+            window.dispatchEvent(new CustomEvent("techideate-slot", { detail: sid }))
+        }
         var i, s = [];
         s.push(nf), L1.initTexture(e.material.map), i = new s6({
             plugins: s,
@@ -64782,705 +64832,7 @@ class Bu0 {
         this.instances = {}
     }
 }
-const ku0 = {
-        block_0: [{
-            position: {
-                x: 122.64507618310068,
-                y: 1.1023043582021828,
-                z: 85.15571011356235
-            },
-            rotation: {
-                x: 1224646799147353e-31,
-                y: -1.5707963267948966,
-                z: 0
-            },
-            scale: {
-                x: 1.81155205965084,
-                y: 1.81155205965084,
-                z: 1.81155205965084
-            }
-        }, {
-            position: {
-                x: -407.9880353562231,
-                y: 0,
-                z: -817.3262787281387
-            },
-            rotation: {
-                x: 12246467991473532e-32,
-                y: 1.5707963267948974,
-                z: -12246467991473527e-32
-            },
-            scale: {
-                x: 8.235479798626157,
-                y: 8.235479798626157,
-                z: 8.235479798626157
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 210.6739156493578,
-                y: 0,
-                z: -102.56121509627326
-            },
-            rotation: {
-                x: 12246467991473532e-32,
-                y: -3.1415926535897927,
-                z: -1224646799147353e-31
-            },
-            scale: {
-                x: 3.045562261750564,
-                y: 3.045562261750564,
-                z: 3.045562261750564
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        block_1: [{
-            position: {
-                x: 50.77762236068435,
-                y: 0,
-                z: 122.2476971825742
-            },
-            rotation: {
-                x: 0,
-                y: 566553889764798e-30,
-                z: 0
-            },
-            scale: {
-                x: 2.1209411968455627,
-                y: 2.1209411968455627,
-                z: 2.1209411968455627
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -770.3376214539413,
-                y: 0,
-                z: -377.06263843456895
-            },
-            rotation: {
-                x: 0,
-                y: 6890185696795333e-31,
-                z: 0
-            },
-            scale: {
-                x: 6.723585735718659,
-                y: 6.723585735718659,
-                z: 6.723585735718659
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 350.67235029355265,
-                y: 0,
-                z: -279.06551677044615
-            },
-            rotation: {
-                x: 0,
-                y: 1.5707963267948972,
-                z: 0
-            },
-            scale: {
-                x: 1.7889000462240103,
-                y: 1.7889000462240103,
-                z: 1.7889000462240103
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -287.123075635336,
-                y: 0,
-                z: 40.40007268962607
-            },
-            rotation: {
-                x: 0,
-                y: -3.1415926535897927,
-                z: 0
-            },
-            scale: {
-                x: 2.8395482685337035,
-                y: 2.8395482685337035,
-                z: 2.8395482685337035
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        block_2: [{
-            position: {
-                x: 515.8554216052034,
-                y: 0,
-                z: -401.9674688463765
-            },
-            rotation: {
-                x: 0,
-                y: -3.1415926535897927,
-                z: 0
-            },
-            scale: {
-                x: 6.321073608329018,
-                y: 6.321073608329018,
-                z: 6.321073608329018
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 185.12480422069063,
-                y: 1.1023043582021828,
-                z: 141.172597994848
-            },
-            rotation: {
-                x: 0,
-                y: 1.570796326794897,
-                z: 0
-            },
-            scale: {
-                x: 2.2281042820858934,
-                y: 2.2281042820858934,
-                z: 2.2281042820858934
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -539.3204720796214,
-                y: 0,
-                z: 597.056293337668
-            },
-            rotation: {
-                x: 0,
-                y: 1.570796326794897,
-                z: 0
-            },
-            scale: {
-                x: 6.321073608329018,
-                y: 6.321073608329018,
-                z: 6.321073608329018
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        distributor_0: [],
-        distributor_1: [{
-            position: {
-                x: 148.64804401457675,
-                y: 0,
-                z: -99.37218873819913
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 1.6756748280814642,
-                y: 1.6756748280814642,
-                z: 1.6756748280814642
-            },
-            scriptData: {
-                id: "fefe",
-                class: ""
-            }
-        }],
-        garbage: [{
-            position: {
-                x: 20,
-                y: 0,
-                z: 300
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 1,
-                y: 1,
-                z: 1
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        crossing_0: [{
-            position: {
-                x: -78.68719402070838,
-                y: .022073108563667176,
-                z: -113.22521267652638
-            },
-            rotation: {
-                x: 1224646799147353e-31,
-                y: 3.141592653589793,
-                z: -12246467991473532e-32
-            },
-            scale: {
-                x: 1.0279713370300247,
-                y: 1.0279713370300247,
-                z: 1.0279713370300247
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 163.80602550551788,
-                y: .022073108563667176,
-                z: -96.24748738182397
-            },
-            rotation: {
-                x: 3.141592653589793,
-                y: -12246467991473532e-32,
-                z: 3.141592653589793
-            },
-            scale: {
-                x: 1.0279713370300247,
-                y: 1.0279713370300247,
-                z: 1.0279713370300247
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        crossing_1: [{
-            position: {
-                x: -435.9859396773644,
-                y: .12459534759021196,
-                z: -628.8338932713672
-            },
-            rotation: {
-                x: 0,
-                y: 1.5707963267948963,
-                z: 0
-            },
-            scale: {
-                x: 8.582631935123043,
-                y: 8.582631935123043,
-                z: 8.582631935123043
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -149.11670157766298,
-                y: .12459534759021196,
-                z: -126.69615090774289
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 3.857029179857998,
-                y: 3.857029179857998,
-                z: 3.857029179857998
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        tower: [{
-            position: {
-                x: 136.9620875153425,
-                y: 0,
-                z: -183.58189959922944
-            },
-            rotation: {
-                x: 0,
-                y: -3.141592653589793,
-                z: 0
-            },
-            scale: {
-                x: 1.5848322652962055,
-                y: 1.5848322652962055,
-                z: 1.5848322652962055
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -110.78220778191098,
-                y: 0,
-                z: 3.023227684469248
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 2.2969528419827143,
-                y: 2.2969528419827143,
-                z: 2.2969528419827143
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        map: [{
-            position: {
-                x: -617.4490947798187,
-                y: 0,
-                z: -731.1315940924226
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 73.92193741244876,
-                y: 73.92193741244876,
-                z: 73.92193741244876
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 152.33409284978578,
-                y: 0,
-                z: 213.11842452608744
-            },
-            rotation: {
-                x: 0,
-                y: -1.5707963267948966,
-                z: 0
-            },
-            scale: {
-                x: 42.54528570982743,
-                y: 42.54528570982743,
-                z: 42.54528570982743
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        barrier: [{
-            position: {
-                x: 187.8817217031232,
-                y: 76.65232118866213,
-                z: 32.77473469918957
-            },
-            rotation: {
-                x: 0,
-                y: 24492935982947064e-32,
-                z: 0
-            },
-            scale: {
-                x: 4.984236786850859,
-                y: 4.984236786850859,
-                z: 4.984236786850859
-            }
-        }, {
-            position: {
-                x: -190.5279408034073,
-                y: 0,
-                z: -20.86937789890905
-            },
-            rotation: {
-                x: 0,
-                y: -3.1415926535897927,
-                z: 0
-            },
-            scale: {
-                x: 14.441237743177265,
-                y: 14.441237743177265,
-                z: 14.441237743177265
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        wall_0: [{
-            position: {
-                x: 350.39706861155526,
-                y: 0,
-                z: -240.9965981903252
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: -3.1415926535897927,
-                z: 25407181807811912e-49
-            },
-            scale: {
-                x: 3.210884086486276,
-                y: 3.210884086486276,
-                z: 3.210884086486276
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -92.22313058863483,
-                y: -7.255626091194827,
-                z: 108.66026628332179
-            },
-            rotation: {
-                x: 3.141592653589793,
-                y: -12246467991473532e-32,
-                z: 3.141592653589793
-            },
-            scale: {
-                x: 4.959761885577598,
-                y: 4.959761885577598,
-                z: 4.959761885577598
-            }
-        }, {
-            position: {
-                x: 171.93379453203713,
-                y: 0,
-                z: -181.16419344140024
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: -1.5707963267948966,
-                z: 0
-            },
-            scale: {
-                x: 3.210884086486276,
-                y: 3.210884086486276,
-                z: 3.210884086486276
-            }
-        }, {
-            position: {
-                x: -412.21829572060096,
-                y: 0,
-                z: 56.144043966682204
-            },
-            rotation: {
-                x: 1224646799147353e-31,
-                y: -3.1415926535897927,
-                z: 9338873548015653e-48
-            },
-            scale: {
-                x: 8.13487293059214,
-                y: 8.13487293059214,
-                z: 8.13487293059214
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 228.09674529681644,
-                y: 0,
-                z: -240.9965981903252
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: -3.1415926535897927,
-                z: 25407181807811912e-49
-            },
-            scale: {
-                x: 3.210884086486276,
-                y: 3.210884086486276,
-                z: 3.210884086486276
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -592.4407566624343,
-                y: 0,
-                z: -240.9965981903252
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: 1.5707963267948974,
-                z: 2465190328815662e-47
-            },
-            scale: {
-                x: 9.83127228834367,
-                y: 9.83127228834367,
-                z: 9.83127228834367
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -592.4407566624343,
-                y: 0,
-                z: 125.78335559529745
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: 1.5707963267948974,
-                z: 2465190328815662e-47
-            },
-            scale: {
-                x: 9.83127228834367,
-                y: 9.83127228834367,
-                z: 9.83127228834367
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        mac: [{
-            position: {
-                x: -108.26343399537812,
-                y: 79.54857661997863,
-                z: 3.206631040088915
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 1.8112929583579782,
-                y: 1.8112929583579782,
-                z: 1.8112929583579782
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        buildingramp: [{
-            position: {
-                x: -71.62095503249753,
-                y: 0,
-                z: -72.32933616140122
-            },
-            rotation: {
-                x: 0,
-                y: 1.5707963267948963,
-                z: 0
-            },
-            scale: {
-                x: 1.5250555724861008,
-                y: 1.5250555724861008,
-                z: 1.5250555724861008
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 157.83433931082718,
-                y: 0,
-                z: -11.638325924111996
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 2.268825418245307,
-                y: 2.268825418245307,
-                z: 2.268825418245307
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        samsy_logo: [{
-            position: {
-                x: 364.8736571584327,
-                y: 0,
-                z: 742.3749479423003
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 2.099256221158518,
-                y: 2.099256221158518,
-                z: 2.099256221158518
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        nintendo: [{
-            position: {
-                x: 340,
-                y: 0,
-                z: 300
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 1,
-                y: 1,
-                z: 1
-            }
-        }],
-        notnyc_logo: [{
-            position: {
-                x: 237.5595559872777,
-                y: 109.94307804814817,
-                z: 130.3708251248988
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 4.8156839236691775,
-                y: 4.8156839236691775,
-                z: 4.8156839236691775
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }]
-    },
+const ku0 = {"distributor_0": [], "distributor_1": [{"position": {"x": 148.64804401457675, "y": 0, "z": -99.37218873819913}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 1.6756748280814642, "y": 1.6756748280814642, "z": 1.6756748280814642}, "scriptData": {"id": "fefe", "class": ""}}], "garbage": [{"position": {"x": 20, "y": 0, "z": 300}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 1, "y": 1, "z": 1}, "scriptData": {"id": "", "class": ""}}], "mac": [{"position": {"x": -108.26343399537812, "y": 79.54857661997863, "z": 3.206631040088915}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 1.8112929583579782, "y": 1.8112929583579782, "z": 1.8112929583579782}, "scriptData": {"id": "", "class": ""}}], "samsy_logo": [{"position": {"x": 364.8736571584327, "y": 0, "z": 742.3749479423003}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 2.099256221158518, "y": 2.099256221158518, "z": 2.099256221158518}, "scriptData": {"id": "", "class": ""}}], "nintendo": [{"position": {"x": 340, "y": 0, "z": 300}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 1, "y": 1, "z": 1}}], "notnyc_logo": [{"position": {"x": 237.5595559872777, "y": 109.94307804814817, "z": 130.3708251248988}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 4.8156839236691775, "y": 4.8156839236691775, "z": 4.8156839236691775}, "scriptData": {"id": "", "class": ""}}], "block_0__1": [{"position": {"x": 122.64507618310068, "y": 1.1023043582021828, "z": 85.15571011356235}, "rotation": {"x": 1.224646799147353e-16, "y": -1.5707963267948966, "z": 0}, "scale": {"x": 1.81155205965084, "y": 1.81155205965084, "z": 1.81155205965084}}], "block_0__2": [{"position": {"x": -407.9880353562231, "y": 0, "z": -817.3262787281387}, "rotation": {"x": 1.2246467991473532e-16, "y": 1.5707963267948974, "z": -1.2246467991473527e-16}, "scale": {"x": 8.235479798626157, "y": 8.235479798626157, "z": 8.235479798626157}, "scriptData": {"id": "", "class": ""}}], "block_0__3": [{"position": {"x": 210.6739156493578, "y": 0, "z": -102.56121509627326}, "rotation": {"x": 1.2246467991473532e-16, "y": -3.1415926535897927, "z": -1.224646799147353e-16}, "scale": {"x": 3.045562261750564, "y": 3.045562261750564, "z": 3.045562261750564}, "scriptData": {"id": "", "class": ""}}], "block_1__1": [{"position": {"x": 50.77762236068435, "y": 0, "z": 122.2476971825742}, "rotation": {"x": 0, "y": 5.66553889764798e-16, "z": 0}, "scale": {"x": 2.1209411968455627, "y": 2.1209411968455627, "z": 2.1209411968455627}, "scriptData": {"id": "", "class": ""}}], "block_1__2": [{"position": {"x": -770.3376214539413, "y": 0, "z": -377.06263843456895}, "rotation": {"x": 0, "y": 6.890185696795333e-16, "z": 0}, "scale": {"x": 6.723585735718659, "y": 6.723585735718659, "z": 6.723585735718659}, "scriptData": {"id": "", "class": ""}}], "block_1__3": [{"position": {"x": 350.67235029355265, "y": 0, "z": -279.06551677044615}, "rotation": {"x": 0, "y": 1.5707963267948972, "z": 0}, "scale": {"x": 1.7889000462240103, "y": 1.7889000462240103, "z": 1.7889000462240103}, "scriptData": {"id": "", "class": ""}}], "block_1__4": [{"position": {"x": -287.123075635336, "y": 0, "z": 40.40007268962607}, "rotation": {"x": 0, "y": -3.1415926535897927, "z": 0}, "scale": {"x": 2.8395482685337035, "y": 2.8395482685337035, "z": 2.8395482685337035}, "scriptData": {"id": "", "class": ""}}], "block_2__1": [{"position": {"x": 515.8554216052034, "y": 0, "z": -401.9674688463765}, "rotation": {"x": 0, "y": -3.1415926535897927, "z": 0}, "scale": {"x": 6.321073608329018, "y": 6.321073608329018, "z": 6.321073608329018}, "scriptData": {"id": "", "class": ""}}], "block_2__2": [{"position": {"x": 185.12480422069063, "y": 1.1023043582021828, "z": 141.172597994848}, "rotation": {"x": 0, "y": 1.570796326794897, "z": 0}, "scale": {"x": 2.2281042820858934, "y": 2.2281042820858934, "z": 2.2281042820858934}, "scriptData": {"id": "", "class": ""}}], "block_2__3": [{"position": {"x": -539.3204720796214, "y": 0, "z": 597.056293337668}, "rotation": {"x": 0, "y": 1.570796326794897, "z": 0}, "scale": {"x": 6.321073608329018, "y": 6.321073608329018, "z": 6.321073608329018}, "scriptData": {"id": "", "class": ""}}], "wall_0__1": [{"position": {"x": 350.39706861155526, "y": 0, "z": -240.9965981903252}, "rotation": {"x": 1.2246467991473527e-16, "y": -3.1415926535897927, "z": 2.5407181807811912e-33}, "scale": {"x": 3.210884086486276, "y": 3.210884086486276, "z": 3.210884086486276}, "scriptData": {"id": "", "class": ""}}], "wall_0__2": [{"position": {"x": -92.22313058863483, "y": -7.255626091194827, "z": 108.66026628332179}, "rotation": {"x": 3.141592653589793, "y": -1.2246467991473532e-16, "z": 3.141592653589793}, "scale": {"x": 4.959761885577598, "y": 4.959761885577598, "z": 4.959761885577598}}], "wall_0__3": [{"position": {"x": 171.93379453203713, "y": 0, "z": -181.16419344140024}, "rotation": {"x": 1.2246467991473527e-16, "y": -1.5707963267948966, "z": 0}, "scale": {"x": 3.210884086486276, "y": 3.210884086486276, "z": 3.210884086486276}}], "wall_0__4": [{"position": {"x": -412.21829572060096, "y": 0, "z": 56.144043966682204}, "rotation": {"x": 1.224646799147353e-16, "y": -3.1415926535897927, "z": 9.338873548015653e-33}, "scale": {"x": 8.13487293059214, "y": 8.13487293059214, "z": 8.13487293059214}, "scriptData": {"id": "", "class": ""}}], "wall_0__5": [{"position": {"x": 228.09674529681644, "y": 0, "z": -240.9965981903252}, "rotation": {"x": 1.2246467991473527e-16, "y": -3.1415926535897927, "z": 2.5407181807811912e-33}, "scale": {"x": 3.210884086486276, "y": 3.210884086486276, "z": 3.210884086486276}, "scriptData": {"id": "", "class": ""}}], "wall_0__6": [{"position": {"x": -592.4407566624343, "y": 0, "z": -240.9965981903252}, "rotation": {"x": 1.2246467991473527e-16, "y": 1.5707963267948974, "z": 2.465190328815662e-32}, "scale": {"x": 9.83127228834367, "y": 9.83127228834367, "z": 9.83127228834367}, "scriptData": {"id": "", "class": ""}}], "wall_0__7": [{"position": {"x": -592.4407566624343, "y": 0, "z": 125.78335559529745}, "rotation": {"x": 1.2246467991473527e-16, "y": 1.5707963267948974, "z": 2.465190328815662e-32}, "scale": {"x": 9.83127228834367, "y": 9.83127228834367, "z": 9.83127228834367}, "scriptData": {"id": "", "class": ""}}], "tower__1": [{"position": {"x": 136.9620875153425, "y": 0, "z": -183.58189959922944}, "rotation": {"x": 0, "y": -3.141592653589793, "z": 0}, "scale": {"x": 1.5848322652962055, "y": 1.5848322652962055, "z": 1.5848322652962055}, "scriptData": {"id": "", "class": ""}}], "tower__2": [{"position": {"x": -110.78220778191098, "y": 0, "z": 3.023227684469248}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 2.2969528419827143, "y": 2.2969528419827143, "z": 2.2969528419827143}, "scriptData": {"id": "", "class": ""}}], "map__1": [{"position": {"x": -617.4490947798187, "y": 0, "z": -731.1315940924226}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 73.92193741244876, "y": 73.92193741244876, "z": 73.92193741244876}, "scriptData": {"id": "", "class": ""}}], "map__2": [{"position": {"x": 152.33409284978578, "y": 0, "z": 213.11842452608744}, "rotation": {"x": 0, "y": -1.5707963267948966, "z": 0}, "scale": {"x": 42.54528570982743, "y": 42.54528570982743, "z": 42.54528570982743}, "scriptData": {"id": "", "class": ""}}], "barrier__1": [{"position": {"x": 187.8817217031232, "y": 76.65232118866213, "z": 32.77473469918957}, "rotation": {"x": 0, "y": 2.4492935982947064e-16, "z": 0}, "scale": {"x": 4.984236786850859, "y": 4.984236786850859, "z": 4.984236786850859}}], "barrier__2": [{"position": {"x": -190.5279408034073, "y": 0, "z": -20.86937789890905}, "rotation": {"x": 0, "y": -3.1415926535897927, "z": 0}, "scale": {"x": 14.441237743177265, "y": 14.441237743177265, "z": 14.441237743177265}, "scriptData": {"id": "", "class": ""}}], "buildingramp__1": [{"position": {"x": -71.62095503249753, "y": 0, "z": -72.32933616140122}, "rotation": {"x": 0, "y": 1.5707963267948963, "z": 0}, "scale": {"x": 1.5250555724861008, "y": 1.5250555724861008, "z": 1.5250555724861008}, "scriptData": {"id": "", "class": ""}}], "buildingramp__2": [{"position": {"x": 157.83433931082718, "y": 0, "z": -11.638325924111996}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 2.268825418245307, "y": 2.268825418245307, "z": 2.268825418245307}, "scriptData": {"id": "", "class": ""}}], "crossing_0__1": [{"position": {"x": -78.68719402070838, "y": 0.022073108563667176, "z": -113.22521267652638}, "rotation": {"x": 1.224646799147353e-16, "y": 3.141592653589793, "z": -1.2246467991473532e-16}, "scale": {"x": 1.0279713370300247, "y": 1.0279713370300247, "z": 1.0279713370300247}, "scriptData": {"id": "", "class": ""}}], "crossing_0__2": [{"position": {"x": 163.80602550551788, "y": 0.022073108563667176, "z": -96.24748738182397}, "rotation": {"x": 3.141592653589793, "y": -1.2246467991473532e-16, "z": 3.141592653589793}, "scale": {"x": 1.0279713370300247, "y": 1.0279713370300247, "z": 1.0279713370300247}, "scriptData": {"id": "", "class": ""}}], "crossing_1__1": [{"position": {"x": -435.9859396773644, "y": 0.12459534759021196, "z": -628.8338932713672}, "rotation": {"x": 0, "y": 1.5707963267948963, "z": 0}, "scale": {"x": 8.582631935123043, "y": 8.582631935123043, "z": 8.582631935123043}, "scriptData": {"id": "", "class": ""}}], "crossing_1__2": [{"position": {"x": -149.11670157766298, "y": 0.12459534759021196, "z": -126.69615090774289}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 3.857029179857998, "y": 3.857029179857998, "z": 3.857029179857998}, "scriptData": {"id": "", "class": ""}}]},
     Fu0 = {
         kit: ku0
     },
@@ -65511,7 +64863,7 @@ class Hu0 extends pe {
         }
     }
     async preload() {
-        this.kitScene = await pi.loadKit("./models/cyberfix.glb"), this.instancer = new Bu0(this.kitScene)
+        this.kitScene = await pi.loadKit("./models/cyberfix.glb?v=screens5"), this.instancer = new Bu0(this.kitScene)
     }
     async setState(t, i) {
         switch (t) {
@@ -65560,7 +64912,7 @@ class Hu0 extends pe {
                     rotation: u.rotation,
                     scale: u.scale
                 };
-                u.scriptData != null && (c.scriptData = u.scriptData), this.instancer.items[a].spawn(c), l++
+                u.scriptData != null && (c.scriptData = u.scriptData), this.instancer.items[a] ? this.instancer.items[a].spawn(c) : console.warn("[TECHIDEATE] 3D model is missing piece \"" + a + "\" - replace public/models/cyberfix.glb with the matching version and hard refresh (Ctrl+Shift+R)"), l++
             }
             n++
         }
@@ -65790,7 +65142,7 @@ class Gu0 extends s3 {
     update() {}
 }
 new P;
-const Wu0 = [16711731, 9240627, 3932211, 7536663, 4128781];
+const Wu0 = [43263, 24768, 14976, 37088, 8781];
 class wd extends Te {
     constructor(e) {
         super(), this.lineWidth = e?.lineWidth || .1, this.source = e?.source || Q0.capsule, this.definition = e?.definition || 20, this.lifeSpan = e?.lifeSpan || .5, this.autoSpawnRate = e?.autoSpawnRate || 50, this.autoSpawn = e?.autoSpawn || !1, this.useDefaultSpawnCondition = e?.useDefaultSpawnCondition != null ? e?.useDefaultSpawnCondition : !0, this.particlesColors = e?.particlesColors || Wu0, this.directionSpeed = e?.directionSpeed || 20, this.useOscillation = e?.useOscillation != null ? e?.useOscillation : !1, this.lineLength = e?.lineLength || 10, this.useBorderScale = e?.useBorderScale != null ? e.useBorderScale : 1, this.spawnCondition = e?.spawnCondition || null, this.particlesModifierConfig = e?.particlesModifierConfig || {
@@ -65883,7 +65235,7 @@ var Pi = {
     $u0 = {
         TUTORIAL: "Tutorial completed!",
         VISIT_ALL_SECTIONS: "Visit all sections!",
-        VISIT_ALL_WORKS: "Visit all works!",
+        VISIT_ALL_WORKS: "Visit all events!",
         ALL_COLORS: "All colors collected!",
         ALL_TRACKS: "All tracks requested!",
         ALL_NPCS: "All NPCs talked to!"
@@ -67064,13 +66416,13 @@ class c40 {
             for (; t < e.length;) {
                 let s = t;
                 hn.get().then(async n => {
-                    n.position = e[s].position, e[s].color != null ? n.color = e[s].color : n.color = [1, 0, 0], n.rotationY = e[s].rotation + Math.PI;
+                    n.position = e[s].position, e[s].color != null ? n.color = e[s].color : n.color = [0, .45, 1], n.rotationY = e[s].rotation + Math.PI;
                     var a = e[s].scale;
                     n.scale = {
                         x: a,
                         y: a,
                         z: a
-                    }, n.emissiveAndFaceIndex = [3, 0, 0, Math.round(Math.random() * 6)], n.animate("TALKING"), this.dancers.push(n)
+                    }, n.emissiveAndFaceIndex = [0, 1.3, 3, Math.round(Math.random() * 6)], n.animate("TALKING"), this.dancers.push(n)
                 }), t++
             }
             for (let s in this.npcsIds) this.npcsIds[s].datData.nosecret == !0 && (this.npcsIds[s].visible = !1, this.npcsIds[s]._interaction.active = !1);
@@ -67083,19 +66435,19 @@ class c40 {
         let e = 0,
             t = ["WAVING"];
         var i = [];
-        let s = new $0(16711731).convertSRGBToLinear();
+        let s = new $0(43263).convertSRGBToLinear();
         for (; e < f1.length;) {
             let n = e;
             const a = await hn.get().then(async o => {
-                o.position = f1[n].position, o.datData = f1[n], this.allAvatars.push(o), f1[n].movable === !0 && (o.movable = !0, this.npcsMovables.push(o), this.startRandomMovement(o)), f1[n].id != null && (this.npcsIds[f1[n].id] = o), f1[n].color != null ? o.color = f1[n].color : o.color = [1, 0, 0], o.rotationY = f1[n].rotation + Math.PI;
+                o.position = f1[n].position, o.datData = f1[n], this.allAvatars.push(o), f1[n].movable === !0 && (o.movable = !0, this.npcsMovables.push(o), this.startRandomMovement(o)), f1[n].id != null && (this.npcsIds[f1[n].id] = o), f1[n].color != null ? o.color = f1[n].color : o.color = [0, .45, 1], o.rotationY = f1[n].rotation + Math.PI;
                 var l = 3;
                 if (f1[n].scale != null && (l = f1[n].scale), o.scale = {
                         x: l,
                         y: l,
                         z: l
                     }, f1[n].anim != null ? o.animate(f1[n].anim) : o.animate(t[Math.floor(Math.random() * t.length)]), f1[n].dialog != null) {
-                    var u = o.datData.emissive ? o.datData.emissive : [3, 0, 0];
-                    o.emissiveAndFaceIndex = [u[0], u[1], u[2], o.datData.face != null ? o.datData.face : 5], o.color = o.datData.color ? o.datData.color : [.65, 0, 0], f1[n].id == null && this.npcsWithDialog++;
+                    var u = o.datData.emissive ? o.datData.emissive : [0, 1.3, 3];
+                    o.emissiveAndFaceIndex = [u[0], u[1], u[2], o.datData.face != null ? o.datData.face : 5], o.color = o.datData.color ? o.datData.color : [0, .28, .65], f1[n].id == null && this.npcsWithDialog++;
                     const c = Y0 ? 1 : .25,
                         h = Nn.get({
                             opacity: 1,
@@ -67154,7 +66506,7 @@ class c40 {
         for (e = 0; e < p9.length;) {
             let n = e;
             hn.get().then(async a => {
-                a.position = p9[n].position, p9[n].color != null ? a.color = p9[n].color : a.color = [1, 0, 0], a.rotationY = p9[n].rotation + Math.PI;
+                a.position = p9[n].position, p9[n].color != null ? a.color = p9[n].color : a.color = [0, .45, 1], a.rotationY = p9[n].rotation + Math.PI;
                 var o = 3;
                 p9[n].scale != null && (o = p9[n].scale), a.scale = {
                     x: o,
@@ -67276,7 +66628,7 @@ class AM extends ji {
         }), this.add(this.circleLines), this.circleLines.reset(), this.circleLines.active = !0
     }
     animateIn() {
-        this.animated || (this.tween && this.tween.kill(), this.circleLines.particles.particleColors = [16711680, 16777215], this.tween = X0.to(this.circleLines.particlesModifierConfig.randomOffset, {
+        this.animated || (this.tween && this.tween.kill(), this.circleLines.particles.particleColors = [43263, 16777215], this.tween = X0.to(this.circleLines.particlesModifierConfig.randomOffset, {
             duration: .1,
             y: 6,
             onUpdate: () => {
@@ -67292,7 +66644,7 @@ class AM extends ji {
         this.circleLines.particlesModifierConfig.randomOffset.y = s, this.circleLines.particlePositionModifier.setup()
     }
     animateOut() {
-        this.animated && (this.tween && this.tween.kill(), this.circleLines.particles.particleColors = [16711680], this.tween = X0.to(this.circleLines.particlesModifierConfig.randomOffset, {
+        this.animated && (this.tween && this.tween.kill(), this.circleLines.particles.particleColors = [43263], this.tween = X0.to(this.circleLines.particlesModifierConfig.randomOffset, {
             duration: .1,
             y: 2,
             onUpdate: () => {
@@ -67320,7 +66672,7 @@ class v40 extends pe {
     async init() {
         this.currentActivationTimer = 0;
         let t = await hn.get();
-        t.color = [.02, .02, .02], t.emissiveAndFaceIndex = [1.5, 0, 0, 6], t.rotationY = Math.PI * .5, t.position = {
+        t.color = [.02, .02, .02], t.emissiveAndFaceIndex = [0, .65, 1.5, 6], t.rotationY = Math.PI * .5, t.position = {
             x: -50.44762289523212,
             y: 20.972793115844727,
             z: -83.14707702250091
@@ -67330,7 +66682,7 @@ class v40 extends pe {
             z: 15
         }, t.animate("TALKING");
         let i = await hn.get();
-        i.color = [.02, .02, .02], i.emissiveAndFaceIndex = [1.5, 0, 0, 6], i.rotationY = -8, i.position = {
+        i.color = [.02, .02, .02], i.emissiveAndFaceIndex = [0, .65, 1.5, 6], i.rotationY = -8, i.position = {
             x: 139.41536541492212,
             y: -1,
             z: -82.16399987994453
@@ -67355,7 +66707,7 @@ class v40 extends pe {
             x: -37.514002746809524,
             z: -84.19647067854945
         };
-        this.request.position.set(o.x, 4, o.z), window.rq = this.request, this.nextTrackButton = this.createRaycastMesh(this.request, "infos", 16711714), this.request.add(this.nextTrackButton), this.circleLines = new AM, this.circleLines.position.set(o.x, 0, o.z), this.add(this.circleLines), this.datGlitch = new M4(a, {
+        this.request.position.set(o.x, 4, o.z), window.rq = this.request, this.nextTrackButton = this.createRaycastMesh(this.request, "infos", 43263), this.request.add(this.nextTrackButton), this.circleLines = new AM, this.circleLines.position.set(o.x, 0, o.z), this.add(this.circleLines), this.datGlitch = new M4(a, {
             speed: .1,
             glitchAmount: .2,
             glitchDuration: .5,
@@ -67435,7 +66787,7 @@ class A40 extends pe {
             x: 139.9581598845806,
             z: -98.84548449610362
         };
-        this.request.position.set(s.x, 4, s.z), this.bg = this.createRaycastMesh(this.request, "infos", 16711714), this.request.add(this.bg), this.circleLines = new AM, this.circleLines.position.set(s.x, 0, s.z), this.add(this.circleLines), this.datGlitch = new M4(i, {
+        this.request.position.set(s.x, 4, s.z), this.bg = this.createRaycastMesh(this.request, "infos", 43263), this.request.add(this.bg), this.circleLines = new AM, this.circleLines.position.set(s.x, 0, s.z), this.add(this.circleLines), this.datGlitch = new M4(i, {
             speed: .1,
             glitchAmount: .2,
             glitchDuration: .5,
@@ -67524,7 +66876,7 @@ class I40 extends pe {
             font: "formadjrbold"
         }), this.request.scale.set(1.5, 1.5, 1.5);
         const n = $a;
-        this.request.position.set(n.x, 4, n.z), this.bg = this.createRaycastMesh(this.request, "infos", 16711714), this.request.add(this.bg), this.circleLines = new AM, this.circleLines.position.set(n.x, 0, n.z), this.add(this.circleLines), this.datGlitch = new M4(s, {
+        this.request.position.set(n.x, 4, n.z), this.bg = this.createRaycastMesh(this.request, "infos", 43263), this.request.add(this.bg), this.circleLines = new AM, this.circleLines.position.set(n.x, 0, n.z), this.add(this.circleLines), this.datGlitch = new M4(s, {
             speed: .1,
             glitchAmount: .2,
             glitchDuration: .5,
@@ -67591,7 +66943,7 @@ class I40 extends pe {
                 x: i * 1.5,
                 y: i * 1.5,
                 z: i * 1.5
-            }, n.emissiveAndFaceIndex = [3, 0, 0, 15], a.emissiveAndFaceIndex = [3, 0, 0, 15], o.emissiveAndFaceIndex = [4, 0, 0, 6], this.avatars.push(n), this.avatars.push(a), this.avatars.push(o)
+            }, n.emissiveAndFaceIndex = [0, 1.3, 3, 15], a.emissiveAndFaceIndex = [0, 1.3, 3, 15], o.emissiveAndFaceIndex = [0, 1.7, 4, 6], this.avatars.push(n), this.avatars.push(a), this.avatars.push(o)
         }
         let s = 0;
         for (; s < this.avatars.length;) this.avatars[s].visible = t, s++
@@ -68765,7 +68117,7 @@ class d50 {
                     y: .5,
                     z: .5
                 };
-            let o = new $0(16711731).convertSRGBToLinear(),
+            let o = new $0(43263).convertSRGBToLinear(),
                 l = [o.r, o.g, o.b];
             this.interactions = [], Y0 ? (a.x = .75, a.y = .75, a.z = .75, this.joystickInteraction = Nn.get({
                 opacity: 0,
@@ -74091,7 +73443,7 @@ class yd0 extends sf {
 const Fi = new yd0;
 class np {
     constructor(e, t = {}) {
-        this.element = e, this.originalText = e.innerHTML, this.originalLength = this.originalText.length, this.countBack = this.originalLength, this.countLimit = this.originalLength, this.renderEvent = this.render.bind(this), this.characterType = t.characterType || "katakana", this.originalWidth = e.offsetWidth, this.element.style.width = this.originalWidth + "px", this.element.style.overflow = "hidden", this.element.style.whiteSpace = "nowrap", this.element.innerHTML = "", this.katakana = ["ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク", "ケ", "コ", "サ", "シ", "ス", "セ", "ソ", "タ", "チ", "ツ", "テ", "ト", "ナ", "ニ", "ヌ", "ネ", "ノ", "ハ", "ヒ", "フ", "ヘ", "ホ", "ヤ", "ユ", "ヨ", "ラ", "リ", "ル", "レ", "ロ", "ワ", "ン", "ガ", "ギ", "グ", "ゲ", "ゴ", "ザ", "ジ", "ズ", "ゼ", "ゾ"], this.normalChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", '"', "'", "<", ">", ",", ".", "?", "/"]
+        this.element = e, this.originalText = e.innerHTML, this.originalLength = this.originalText.length, this.countBack = this.originalLength, this.countLimit = this.originalLength, this.renderEvent = this.render.bind(this), this.characterType = t.characterType || "katakana", this.originalWidth = e.offsetWidth, this.element.style.width = this.originalWidth + "px", this.element.style.overflow = "hidden", this.element.style.whiteSpace = "nowrap", this.element.innerHTML = "", this.katakana = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], this.normalChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "[", "]", "{", "}", "|", "\\", ":", ";", '"', "'", "<", ">", ",", ".", "?", "/"]
     }
     setNewText(e) {
         this.element.innerHTML = e, this.originalText = e, this.originalLength = this.originalText.length, this.countBack = this.originalLength, this.countLimit = this.originalLength
@@ -74218,7 +73570,7 @@ const YM = Ls(xd0, [
                     name: "EXPLORE",
                     path: "/"
                 }, {
-                    name: "WORKS",
+                    name: "EVENTS",
                     path: "/works"
                 }, {
                     name: "ABOUT",
@@ -74760,7 +74112,7 @@ const Hd0 = {
 
 function qd0(r, e, t, i, s, n) {
     const a = js("LeftTutorial");
-    return Ne(), Gt("div", Ud0, [U0("div", Vd0, [e[0] || (e[0] = VM('<h1 id="smsy" class="bold anime" data-v-2adf675c><span class="transi" data-v-2adf675c> LINUX.DO <span class="tm" data-v-2adf675c>©</span> 1203510’ </span></h1><br data-v-2adf675c><h2 class="anime" data-v-2adf675c>クリエイティブテクノロジスト</h2><h3 class="medium anime" data-v-2adf675c>Creative Development <br data-v-2adf675c> &amp; Experience Designer</h3><h4 class="medium anime" data-v-2adf675c> Raised on &#39;90s classics </h4>', 5)), n.isHome ? (Ne(), gs(a, {
+    return Ne(), Gt("div", Ud0, [U0("div", Vd0, [e[0] || (e[0] = VM('<h1 id="smsy" class="bold anime" data-v-2adf675c><span class="transi" data-v-2adf675c> TECHIDEATE <span class="tm" data-v-2adf675c>’26</span></span></h1><br data-v-2adf675c><h2 class="anime" data-v-2adf675c>TECH FEST 2026</h2><h3 class="medium anime" data-v-2adf675c>Build what comes next</h3><h4 class="medium anime" data-v-2adf675c> Three days of technical curiosity </h4>', 5)), n.isHome ? (Ne(), gs(a, {
         key: 0
     })) : A1("", !0)])])
 }
@@ -75056,7 +74408,7 @@ function lm0(r, e, t, i, s, n) {
     }, [U0("div", tm0, [U0("div", im0, [n.isQuest ? (Ne(), Gt("img", sm0)) : A1("", !0), n.isMusic ? (Ne(), Gt("img", nm0)) : A1("", !0)]), U0("div", rm0, [U0("div", am0, [U0("h1", {
         class: "bold notification",
         ref: "titleEl"
-    }, _s(s.currentNotification.title), 513)]), U0("h3", om0, " ノティフィケーション ", 512), U0("h2", {
+    }, _s(s.currentNotification.title), 513)]), U0("h3", om0, " NOTIFICATION ", 512), U0("h2", {
         class: "medium anime",
         ref: "textEl"
     }, _s(s.currentNotification.text), 513)])])], 2)), [
@@ -76931,24 +76283,26 @@ function Wp0(r, e, t, i, s, n) {
     }, [U0("h1", {
         id: "smsy",
         class: "bold"
-    }, [ep("SMSY "), U0("span", null, "©"), ep(" 26’")]), U0("h2", null, " クリエイティブテクノロジスト"), U0("div", {
+    }, [ep("TECHIDEATE "), U0("span", {
+        class: "tm"
+    }, "’26")]), U0("h2", null, " TECH FEST 2026"), U0("div", {
         class: "big-title"
-    }, "SMSY"), U0("h3", null, " クリエイティブテクノロジスト")], -1)), U0("div", qp0, [e[3] || (e[3] = U0("div", {
+    }, "TECHIDEATE"), U0("h3", null, " MANIPAL UNIVERSITY JAIPUR")], -1)), U0("div", qp0, [e[3] || (e[3] = U0("div", {
         class: "about-text-container-half"
-    }, [U0("p", null, "My projects are influenced by everyone I meet, from Gobelins school to university classmates, Google Creative Lab, artist friends and makers. They've all helped me develop my signature technique throughout the years."), U0("p", null, "I started working in digital 12 years ago from Paris - 93. Since then, I've earned 50+ international awards including Gold Cannes Lion, Awwwards, Adobe Cutting Edge, and FWA ( days, months, and year award ) both as an independent creative technologist and as part of teams."), U0("p", null, "I help people understand technical and graphical challenges shaping digital experiences, creating 3D interactive graphics, computational code, marketing experiences, & visual arts. Contact me for availabilities.")], -1)), e[4] || (e[4] = U0("div", {
+    }, [U0("p", null, "TECHIDEATE is the annual technical fest of Manipal University Jaipur: three days where students build, break and rethink technology together."), U0("p", null, "It brings together hackathons, coding contests, robotics, cybersecurity, AI and design challenges, all run by the clubs and student communities that make our campus tick."), U0("p", null, "Whether you are writing your first line of code or shipping your tenth project, there is a stage for you here. Come to compete, to learn from speakers and mentors, or just to see what your peers are building.")], -1)), e[4] || (e[4] = U0("div", {
         class: "about-text-container-half"
-    }, [U0("p", null, "私はデジタル体験を形作るための技術的およびグラフィックの課題を人々に理解していただくための手助けや、3Dインタラクティブグラフィックス、計算コード、ビジュアルアート等の制作の支援をしています。"), U0("p", null, "私は現在フリーランスでのプロジェクト対応が可能です。")], -1)), U0("div", Gp0, [U0("a", {
+    }, [U0("p", null, "Our theme this year is simple: Build what comes next. Every event is designed to turn ideas into something real, from a 24-hour hackathon to a live startup pitch."), U0("p", null, "Open to students from every branch and year. Explore the city, check out the events, and register before slots fill up.")], -1)), U0("div", Gp0, [U0("a", {
         onMouseenter: e[0] || (e[0] = (...a) => n.linkEnter && n.linkEnter(...a)),
-        href: "mailto:samuel.honigstein@gmail.com"
+        href: "mailto:hello@techideate.in"
     }, "[CONTACT]", 32), U0("a", {
         onMouseenter: e[1] || (e[1] = (...a) => n.linkEnter && n.linkEnter(...a)),
-        href: "https://x.com/Samsyyyy",
+        href: "/events",
         target: "_blank"
-    }, "[X]", 32), U0("a", {
+    }, "[EVENTS]", 32), U0("a", {
         onMouseenter: e[2] || (e[2] = (...a) => n.linkEnter && n.linkEnter(...a)),
-        href: "https://www.linkedin.com/in/samuel-honigstein-12412851/",
+        href: "/schedule",
         target: "_blank"
-    }, "[LINKEDIN]", 32)])]), e[7] || (e[7] = VM('<div class="credits" data-v-b9070ebd><h2 class="bold" data-v-b9070ebd> Credits :</h2><a class="" href="https://duss.booth.pm/items/6110446" target="_blank" data-v-b9070ebd>[Avatar model modified]</a><a class="" href="https://x.com/acolad16" target="_blank" data-v-b9070ebd>[Interfaces help from Acolad]</a><a class="" href="https://x.com/JulienSuard" target="_blank" data-v-b9070ebd>[Forever building cybercity with Julien]</a></div>', 1))], 2)
+    }, "[SCHEDULE]", 32)])]), e[7] || (e[7] = VM('<div class="credits" data-v-b9070ebd><h2 class="bold" data-v-b9070ebd> Credits :</h2><a class="" href="https://duss.booth.pm/items/6110446" target="_blank" data-v-b9070ebd>[Avatar model modified]</a><a class="" href="https://x.com/acolad16" target="_blank" data-v-b9070ebd>[Interfaces help from Acolad]</a><a class="" href="https://x.com/JulienSuard" target="_blank" data-v-b9070ebd>[Forever building cybercity with Julien]</a></div>', 1))], 2)
 }
 const $p0 = Ls(Vp0, [
         ["render", Wp0],
@@ -77205,7 +76559,7 @@ class ef0 {
 }
 class tf0 {
     constructor() {
-        this.container = document.querySelector("#preloader"), this.container.style.display = "block", this.container.style.opacity = 1, this.container.style.width = "100%", this.container.style.height = "100%", this.container.style.position = "fixed", this.container.style.top = 0, this.container.style.left = 0, this.container.style.zIndex = 9999, this.container.style.background = "black", this.timer = 0
+        this.container = document.querySelector("#preloader"), this.container.style.display = "block", this.container.style.opacity = 1, this.container.style.width = "100%", this.container.style.height = "100%", this.container.style.position = "fixed", this.container.style.top = 0, this.container.style.left = 0, this.container.style.zIndex = 9999, this.container.style.background = "black", this.timer = 0, (() => {const c = document.createElement("div");c.id = "techideate-loader-caption";c.style.cssText = "position:absolute;left:0;right:0;top:calc(50% + 70px);text-align:center;pointer-events:none;font-family:forma-djr-display,'Arial Black',Impact,sans-serif;";c.innerHTML = '<div style="font-size:clamp(28px,4vw,56px);font-weight:900;letter-spacing:.06em;color:#eaf7ff;text-shadow:0 0 22px rgba(0,168,255,.9),0 0 4px rgba(0,168,255,.9)">TECHIDEATE<span style="color:#00a8ff;font-size:.5em;vertical-align:top;margin-left:.15em">\u201926</span></div>'+ '<div style="margin-top:12px;font-size:clamp(11px,1.1vw,15px);font-weight:700;letter-spacing:.32em;color:#7fd4ff;text-shadow:0 0 10px rgba(0,168,255,.6)">MANIPAL UNIVERSITY JAIPUR</div>';this.container.appendChild(c)})()
     }
     preload() {
         return new Promise((e, t) => {
@@ -77216,7 +76570,7 @@ class tf0 {
                 },
                 s = new Image;
             s.onload = () => {
-                i.image = s, i.animations = cO.animations, this.sprite = new ef0([s], [cO], i), this.container.appendChild(this.sprite.canvasTarget), this.sprite.play(), this.timer = Date.now(), e()
+                i.image = s, i.animations = cO.animations, this.sprite = new ef0([s], [cO], i), this.sprite.canvasTarget.style.filter = "hue-rotate(205deg) saturate(1.3) brightness(1.15)", this.container.appendChild(this.sprite.canvasTarget), this.sprite.play(), this.timer = Date.now(), e()
             }, s.src = "preloader/preloader.png"
         })
     }
