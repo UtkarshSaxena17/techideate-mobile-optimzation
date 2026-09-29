@@ -1,0 +1,572 @@
+{
+  "_help": [
+    "Edit this file to change what the city screens show. See screens/README.txt for full steps.",
+    "majorEvents -> the 10 VIDEO screens (V01-V10). Videos: 10 sec, 16:9, 1280x720, MP4, no sound.",
+    "majorEvents also fill the EVENTS slider (centre screen), in this order: name, club, date, time, description (one short line), details (shown under INFOS), registerUrl (VISIT button).",
+    "clubEvents  -> rotate on the 26 POSTER screens (P01-P26), ordered by event time.",
+    "Upcoming events go on the screens closest to the centre. Finished events move to the outer screens.",
+    "Posters: posterTall = 1:2 (e.g. 800x1600), posterWide = 2:1 (e.g. 1600x800). Keep text in the middle.",
+    "date = YYYY-MM-DD, time = HH:MM (24 hour, India time)."
+  ],
+  "posterSwitchSeconds": 8,
+  "eventLengthHours": 3,
+  "videosPlayingAtOnce": {
+    "desktop": 4,
+    "phone": 2
+  },
+  "testNow": "",
+  "majorEvents": [
+    {
+      "screen": "V01",
+      "name": "Major Event 01",
+      "club": "Main Club 01",
+      "date": "2026-10-14",
+      "time": "10:00",
+      "video": "videos/major-01.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 01. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    },
+    {
+      "screen": "V02",
+      "name": "Major Event 02",
+      "club": "Main Club 02",
+      "date": "2026-10-15",
+      "time": "10:00",
+      "video": "videos/major-02.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 02. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    },
+    {
+      "screen": "V03",
+      "name": "Major Event 03",
+      "club": "Main Club 03",
+      "date": "2026-10-16",
+      "time": "10:00",
+      "video": "videos/major-03.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 03. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    },
+    {
+      "screen": "V04",
+      "name": "Major Event 04",
+      "club": "Main Club 04",
+      "date": "2026-10-14",
+      "time": "10:00",
+      "video": "videos/major-04.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 04. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    },
+    {
+      "screen": "V05",
+      "name": "Major Event 05",
+      "club": "Main Club 05",
+      "date": "2026-10-15",
+      "time": "13:00",
+      "video": "videos/major-05.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 05. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    },
+    {
+      "screen": "V06",
+      "name": "Major Event 06",
+      "club": "Main Club 06",
+      "date": "2026-10-16",
+      "time": "13:00",
+      "video": "videos/major-06.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 06. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    },
+    {
+      "screen": "V07",
+      "name": "Major Event 07",
+      "club": "Main Club 07",
+      "date": "2026-10-14",
+      "time": "13:00",
+      "video": "videos/major-07.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 07. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    },
+    {
+      "screen": "V08",
+      "name": "Major Event 08",
+      "club": "Main Club 08",
+      "date": "2026-10-15",
+      "time": "13:00",
+      "video": "videos/major-08.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 08. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    },
+    {
+      "screen": "V09",
+      "name": "Major Event 09",
+      "club": "Main Club 09",
+      "date": "2026-10-16",
+      "time": "16:00",
+      "video": "videos/major-09.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 09. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    },
+    {
+      "screen": "V10",
+      "name": "Major Event 10",
+      "club": "Main Club 10",
+      "date": "2026-10-14",
+      "time": "16:00",
+      "video": "videos/major-10.mp4",
+      "description": "Flagship event / placeholder",
+      "details": "Placeholder details for Major Event 10. Replace this with what the event is about, who can join, team size, prizes and the venue.",
+      "registerUrl": "/events"
+    }
+  ],
+  "clubEvents": [
+    {
+      "club": "Club 01",
+      "event": "Code Sprint",
+      "date": "2026-10-15",
+      "time": "14:00",
+      "posterTall": "posters/event-01-tall.jpg",
+      "posterWide": "posters/event-01-wide.jpg"
+    },
+    {
+      "club": "Club 02",
+      "event": "Robo Race",
+      "date": "2026-10-16",
+      "time": "10:00",
+      "posterTall": "posters/event-02-tall.jpg",
+      "posterWide": "posters/event-02-wide.jpg"
+    },
+    {
+      "club": "Club 03",
+      "event": "Quiz Night",
+      "date": "2026-10-14",
+      "time": "15:00",
+      "posterTall": "posters/event-03-tall.jpg",
+      "posterWide": "posters/event-03-wide.jpg"
+    },
+    {
+      "club": "Club 04",
+      "event": "Design Jam",
+      "date": "2026-10-15",
+      "time": "11:00",
+      "posterTall": "posters/event-04-tall.jpg",
+      "posterWide": "posters/event-04-wide.jpg"
+    },
+    {
+      "club": "Club 05",
+      "event": "CTF Challenge",
+      "date": "2026-10-16",
+      "time": "16:00",
+      "posterTall": "posters/event-05-tall.jpg",
+      "posterWide": "posters/event-05-wide.jpg"
+    },
+    {
+      "club": "Club 06",
+      "event": "AI Workshop",
+      "date": "2026-10-14",
+      "time": "12:00",
+      "posterTall": "posters/event-06-tall.jpg",
+      "posterWide": "posters/event-06-wide.jpg"
+    },
+    {
+      "club": "Club 07",
+      "event": "Startup Pitch",
+      "date": "2026-10-15",
+      "time": "17:00",
+      "posterTall": "posters/event-07-tall.jpg",
+      "posterWide": "posters/event-07-wide.jpg"
+    },
+    {
+      "club": "Club 08",
+      "event": "Web Dev Bootcamp",
+      "date": "2026-10-16",
+      "time": "13:00",
+      "posterTall": "posters/event-08-tall.jpg",
+      "posterWide": "posters/event-08-wide.jpg"
+    },
+    {
+      "club": "Club 09",
+      "event": "Drone Race",
+      "date": "2026-10-14",
+      "time": "09:00",
+      "posterTall": "posters/event-09-tall.jpg",
+      "posterWide": "posters/event-09-wide.jpg"
+    },
+    {
+      "club": "Club 10",
+      "event": "Game Jam",
+      "date": "2026-10-15",
+      "time": "14:00",
+      "posterTall": "posters/event-10-tall.jpg",
+      "posterWide": "posters/event-10-wide.jpg"
+    },
+    {
+      "club": "Club 11",
+      "event": "Tech Talk",
+      "date": "2026-10-16",
+      "time": "10:00",
+      "posterTall": "posters/event-11-tall.jpg",
+      "posterWide": "posters/event-11-wide.jpg"
+    },
+    {
+      "club": "Club 12",
+      "event": "Circuit Design",
+      "date": "2026-10-14",
+      "time": "15:00",
+      "posterTall": "posters/event-12-tall.jpg",
+      "posterWide": "posters/event-12-wide.jpg"
+    },
+    {
+      "club": "Club 13",
+      "event": "Paper Presentation",
+      "date": "2026-10-15",
+      "time": "11:00",
+      "posterTall": "posters/event-13-tall.jpg",
+      "posterWide": "posters/event-13-wide.jpg"
+    },
+    {
+      "club": "Club 14",
+      "event": "Photography Walk",
+      "date": "2026-10-16",
+      "time": "16:00",
+      "posterTall": "posters/event-14-tall.jpg",
+      "posterWide": "posters/event-14-wide.jpg"
+    },
+    {
+      "club": "Club 15",
+      "event": "Hackathon",
+      "date": "2026-10-14",
+      "time": "12:00",
+      "posterTall": "posters/event-15-tall.jpg",
+      "posterWide": "posters/event-15-wide.jpg"
+    },
+    {
+      "club": "Club 16",
+      "event": "Code Sprint",
+      "date": "2026-10-15",
+      "time": "17:00",
+      "posterTall": "posters/event-16-tall.jpg",
+      "posterWide": "posters/event-16-wide.jpg"
+    },
+    {
+      "club": "Club 17",
+      "event": "Robo Race",
+      "date": "2026-10-16",
+      "time": "13:00",
+      "posterTall": "posters/event-17-tall.jpg",
+      "posterWide": "posters/event-17-wide.jpg"
+    },
+    {
+      "club": "Club 18",
+      "event": "Quiz Night",
+      "date": "2026-10-14",
+      "time": "09:00",
+      "posterTall": "posters/event-18-tall.jpg",
+      "posterWide": "posters/event-18-wide.jpg"
+    },
+    {
+      "club": "Club 19",
+      "event": "Design Jam",
+      "date": "2026-10-15",
+      "time": "14:00",
+      "posterTall": "posters/event-19-tall.jpg",
+      "posterWide": "posters/event-19-wide.jpg"
+    },
+    {
+      "club": "Club 20",
+      "event": "CTF Challenge",
+      "date": "2026-10-16",
+      "time": "10:00",
+      "posterTall": "posters/event-20-tall.jpg",
+      "posterWide": "posters/event-20-wide.jpg"
+    },
+    {
+      "club": "Club 21",
+      "event": "AI Workshop",
+      "date": "2026-10-14",
+      "time": "15:00",
+      "posterTall": "posters/event-21-tall.jpg",
+      "posterWide": "posters/event-21-wide.jpg"
+    },
+    {
+      "club": "Club 22",
+      "event": "Startup Pitch",
+      "date": "2026-10-15",
+      "time": "11:00",
+      "posterTall": "posters/event-22-tall.jpg",
+      "posterWide": "posters/event-22-wide.jpg"
+    },
+    {
+      "club": "Club 23",
+      "event": "Web Dev Bootcamp",
+      "date": "2026-10-16",
+      "time": "16:00",
+      "posterTall": "posters/event-23-tall.jpg",
+      "posterWide": "posters/event-23-wide.jpg"
+    },
+    {
+      "club": "Club 24",
+      "event": "Drone Race",
+      "date": "2026-10-14",
+      "time": "12:00",
+      "posterTall": "posters/event-24-tall.jpg",
+      "posterWide": "posters/event-24-wide.jpg"
+    },
+    {
+      "club": "Club 25",
+      "event": "Game Jam",
+      "date": "2026-10-15",
+      "time": "17:00",
+      "posterTall": "posters/event-25-tall.jpg",
+      "posterWide": "posters/event-25-wide.jpg"
+    },
+    {
+      "club": "Club 26",
+      "event": "Tech Talk",
+      "date": "2026-10-16",
+      "time": "13:00",
+      "posterTall": "posters/event-26-tall.jpg",
+      "posterWide": "posters/event-26-wide.jpg"
+    },
+    {
+      "club": "Club 27",
+      "event": "Circuit Design",
+      "date": "2026-10-14",
+      "time": "09:00",
+      "posterTall": "posters/event-27-tall.jpg",
+      "posterWide": "posters/event-27-wide.jpg"
+    },
+    {
+      "club": "Club 28",
+      "event": "Paper Presentation",
+      "date": "2026-10-15",
+      "time": "14:00",
+      "posterTall": "posters/event-28-tall.jpg",
+      "posterWide": "posters/event-28-wide.jpg"
+    },
+    {
+      "club": "Club 29",
+      "event": "Photography Walk",
+      "date": "2026-10-16",
+      "time": "10:00",
+      "posterTall": "posters/event-29-tall.jpg",
+      "posterWide": "posters/event-29-wide.jpg"
+    },
+    {
+      "club": "Club 30",
+      "event": "Hackathon",
+      "date": "2026-10-14",
+      "time": "15:00",
+      "posterTall": "posters/event-30-tall.jpg",
+      "posterWide": "posters/event-30-wide.jpg"
+    },
+    {
+      "club": "Club 31",
+      "event": "Code Sprint",
+      "date": "2026-10-15",
+      "time": "11:00",
+      "posterTall": "posters/event-31-tall.jpg",
+      "posterWide": "posters/event-31-wide.jpg"
+    },
+    {
+      "club": "Club 32",
+      "event": "Robo Race",
+      "date": "2026-10-16",
+      "time": "16:00",
+      "posterTall": "posters/event-32-tall.jpg",
+      "posterWide": "posters/event-32-wide.jpg"
+    },
+    {
+      "club": "Club 33",
+      "event": "Quiz Night",
+      "date": "2026-10-14",
+      "time": "12:00",
+      "posterTall": "posters/event-33-tall.jpg",
+      "posterWide": "posters/event-33-wide.jpg"
+    },
+    {
+      "club": "Club 34",
+      "event": "Design Jam",
+      "date": "2026-10-15",
+      "time": "17:00",
+      "posterTall": "posters/event-34-tall.jpg",
+      "posterWide": "posters/event-34-wide.jpg"
+    },
+    {
+      "club": "Club 35",
+      "event": "CTF Challenge",
+      "date": "2026-10-16",
+      "time": "13:00",
+      "posterTall": "posters/event-35-tall.jpg",
+      "posterWide": "posters/event-35-wide.jpg"
+    },
+    {
+      "club": "Club 36",
+      "event": "AI Workshop",
+      "date": "2026-10-14",
+      "time": "09:00",
+      "posterTall": "posters/event-36-tall.jpg",
+      "posterWide": "posters/event-36-wide.jpg"
+    },
+    {
+      "club": "Club 37",
+      "event": "Startup Pitch",
+      "date": "2026-10-15",
+      "time": "14:00",
+      "posterTall": "posters/event-37-tall.jpg",
+      "posterWide": "posters/event-37-wide.jpg"
+    },
+    {
+      "club": "Club 38",
+      "event": "Web Dev Bootcamp",
+      "date": "2026-10-16",
+      "time": "10:00",
+      "posterTall": "posters/event-38-tall.jpg",
+      "posterWide": "posters/event-38-wide.jpg"
+    },
+    {
+      "club": "Club 39",
+      "event": "Drone Race",
+      "date": "2026-10-14",
+      "time": "15:00",
+      "posterTall": "posters/event-39-tall.jpg",
+      "posterWide": "posters/event-39-wide.jpg"
+    },
+    {
+      "club": "Club 40",
+      "event": "Game Jam",
+      "date": "2026-10-15",
+      "time": "11:00",
+      "posterTall": "posters/event-40-tall.jpg",
+      "posterWide": "posters/event-40-wide.jpg"
+    },
+    {
+      "club": "Club 01",
+      "event": "Tech Talk",
+      "date": "2026-10-16",
+      "time": "16:00",
+      "posterTall": "posters/event-41-tall.jpg",
+      "posterWide": "posters/event-41-wide.jpg"
+    },
+    {
+      "club": "Club 02",
+      "event": "Circuit Design",
+      "date": "2026-10-14",
+      "time": "12:00",
+      "posterTall": "posters/event-42-tall.jpg",
+      "posterWide": "posters/event-42-wide.jpg"
+    },
+    {
+      "club": "Club 03",
+      "event": "Paper Presentation",
+      "date": "2026-10-15",
+      "time": "17:00",
+      "posterTall": "posters/event-43-tall.jpg",
+      "posterWide": "posters/event-43-wide.jpg"
+    },
+    {
+      "club": "Club 04",
+      "event": "Photography Walk",
+      "date": "2026-10-16",
+      "time": "13:00",
+      "posterTall": "posters/event-44-tall.jpg",
+      "posterWide": "posters/event-44-wide.jpg"
+    },
+    {
+      "club": "Club 05",
+      "event": "Hackathon",
+      "date": "2026-10-14",
+      "time": "09:00",
+      "posterTall": "posters/event-45-tall.jpg",
+      "posterWide": "posters/event-45-wide.jpg"
+    },
+    {
+      "club": "Club 06",
+      "event": "Code Sprint",
+      "date": "2026-10-15",
+      "time": "14:00",
+      "posterTall": "posters/event-46-tall.jpg",
+      "posterWide": "posters/event-46-wide.jpg"
+    },
+    {
+      "club": "Club 07",
+      "event": "Robo Race",
+      "date": "2026-10-16",
+      "time": "10:00",
+      "posterTall": "posters/event-47-tall.jpg",
+      "posterWide": "posters/event-47-wide.jpg"
+    },
+    {
+      "club": "Club 08",
+      "event": "Quiz Night",
+      "date": "2026-10-14",
+      "time": "15:00",
+      "posterTall": "posters/event-48-tall.jpg",
+      "posterWide": "posters/event-48-wide.jpg"
+    },
+    {
+      "club": "Club 09",
+      "event": "Design Jam",
+      "date": "2026-10-15",
+      "time": "11:00",
+      "posterTall": "posters/event-49-tall.jpg",
+      "posterWide": "posters/event-49-wide.jpg"
+    },
+    {
+      "club": "Club 10",
+      "event": "CTF Challenge",
+      "date": "2026-10-16",
+      "time": "16:00",
+      "posterTall": "posters/event-50-tall.jpg",
+      "posterWide": "posters/event-50-wide.jpg"
+    },
+    {
+      "club": "Club 11",
+      "event": "AI Workshop",
+      "date": "2026-10-14",
+      "time": "12:00",
+      "posterTall": "posters/event-51-tall.jpg",
+      "posterWide": "posters/event-51-wide.jpg"
+    },
+    {
+      "club": "Club 12",
+      "event": "Startup Pitch",
+      "date": "2026-10-15",
+      "time": "17:00",
+      "posterTall": "posters/event-52-tall.jpg",
+      "posterWide": "posters/event-52-wide.jpg"
+    },
+    {
+      "club": "Club 13",
+      "event": "Web Dev Bootcamp",
+      "date": "2026-10-16",
+      "time": "13:00",
+      "posterTall": "posters/event-53-tall.jpg",
+      "posterWide": "posters/event-53-wide.jpg"
+    },
+    {
+      "club": "Club 14",
+      "event": "Drone Race",
+      "date": "2026-10-14",
+      "time": "09:00",
+      "posterTall": "posters/event-54-tall.jpg",
+      "posterWide": "posters/event-54-wide.jpg"
+    },
+    {
+      "club": "Club 15",
+      "event": "Game Jam",
+      "date": "2026-10-15",
+      "time": "14:00",
+      "posterTall": "posters/event-55-tall.jpg",
+      "posterWide": "posters/event-55-wide.jpg"
+    }
+  ]
+}

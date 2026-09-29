@@ -45,8 +45,16 @@ onMounted(() => {
   scriptEl = document.createElement('script')
   scriptEl.type = 'module'
   scriptEl.crossOrigin = ''
-  scriptEl.src = '/assets/js/main-BAxw1krX.js?v=fixed'
+  scriptEl.src = '/assets/js/main-BAxw1krX.js?v=screens5'
   document.body.appendChild(scriptEl)
+
+  // TECHIDEATE screen manager: fills the numbered city screens from public/screens/screens.json
+  if (!document.querySelector('script[src*="screen-manager"]')) {
+    const screensEl = document.createElement('script')
+    screensEl.src = '/screens/screen-manager.js?v=screens5'
+    screensEl.defer = true
+    document.body.appendChild(screensEl)
+  }
 })
 
 onUnmounted(() => {

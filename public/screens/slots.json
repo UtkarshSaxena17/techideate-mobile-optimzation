@@ -1,0 +1,362 @@
+[
+ {
+  "id": "P01",
+  "type": "poster",
+  "where": "Map sign (copy 2)",
+  "aspect": 0.588,
+  "x": 152.3,
+  "y": 191.6,
+  "z": 211.0,
+  "distanceFromCentre": 268.4
+ },
+ {
+  "id": "P02",
+  "type": "poster",
+  "where": "Billboard building C (copy 2)",
+  "aspect": 0.283,
+  "x": 252.3,
+  "y": 75.6,
+  "z": 158.5,
+  "distanceFromCentre": 303.4
+ },
+ {
+  "id": "P03",
+  "type": "poster",
+  "where": "Billboard building C (copy 2)",
+  "aspect": 0.321,
+  "x": 218.3,
+  "y": 22.6,
+  "z": 165.7,
+  "distanceFromCentre": 280.2
+ },
+ {
+  "id": "P04",
+  "type": "poster",
+  "where": "Billboard building B (copy 4)",
+  "aspect": 0.282,
+  "x": -211.4,
+  "y": 179.2,
+  "z": -7.2,
+  "distanceFromCentre": 211.4
+ },
+ {
+  "id": "P05",
+  "type": "poster",
+  "where": "Tower (copy 2)",
+  "aspect": 0.312,
+  "x": -110.8,
+  "y": 33.1,
+  "z": 13.4,
+  "distanceFromCentre": 113.2
+ },
+ {
+  "id": "P06",
+  "type": "poster",
+  "where": "Vending machine",
+  "aspect": 0.572,
+  "x": 146.2,
+  "y": 5.7,
+  "z": -97.9,
+  "distanceFromCentre": 170.6
+ },
+ {
+  "id": "P07",
+  "type": "poster",
+  "where": "Billboard building C (copy 1)",
+  "aspect": 0.615,
+  "x": 577.5,
+  "y": 18.5,
+  "z": -555.5,
+  "distanceFromCentre": 794.4
+ },
+ {
+  "id": "P08",
+  "type": "poster",
+  "where": "Billboard building B (copy 1)",
+  "aspect": 0.328,
+  "x": 46.3,
+  "y": 114.6,
+  "z": 188.0,
+  "distanceFromCentre": 203.3
+ },
+ {
+  "id": "P09",
+  "type": "poster",
+  "where": "Ramp building (copy 1)",
+  "aspect": 0.241,
+  "x": -49.7,
+  "y": 30.3,
+  "z": -69.4,
+  "distanceFromCentre": 77.4
+ },
+ {
+  "id": "P10",
+  "type": "poster",
+  "where": "Vending machine",
+  "aspect": 0.572,
+  "x": 146.2,
+  "y": 11.0,
+  "z": -100.9,
+  "distanceFromCentre": 172.1
+ },
+ {
+  "id": "P11",
+  "type": "poster",
+  "where": "Billboard building A (copy 3)",
+  "aspect": 0.357,
+  "x": 174.6,
+  "y": 15.2,
+  "z": -113.5,
+  "distanceFromCentre": 203.0
+ },
+ {
+  "id": "P12",
+  "type": "poster",
+  "where": "Billboard building A (copy 2)",
+  "aspect": 0.615,
+  "x": -498.8,
+  "y": 83.4,
+  "z": -787.6,
+  "distanceFromCentre": 923.8
+ },
+ {
+  "id": "P13",
+  "type": "poster",
+  "where": "Floor crossing B (copy 2)",
+  "aspect": 0.381,
+  "x": -149.1,
+  "y": 0.1,
+  "z": -126.7,
+  "distanceFromCentre": 189.4
+ },
+ {
+  "id": "P14",
+  "type": "poster",
+  "where": "Long wall (copy 6)",
+  "aspect": 2.444,
+  "x": -592.4,
+  "y": 84.0,
+  "z": -241.0,
+  "distanceFromCentre": 635.9
+ },
+ {
+  "id": "P15",
+  "type": "poster",
+  "where": "Billboard building A (copy 1)",
+  "aspect": 0.615,
+  "x": 145.6,
+  "y": 14.5,
+  "z": 78.6,
+  "distanceFromCentre": 170.5
+ },
+ {
+  "id": "P16",
+  "type": "poster",
+  "where": "Floating cube",
+  "aspect": 1.0,
+  "x": -117.3,
+  "y": 79.5,
+  "z": 3.2,
+  "distanceFromCentre": 118.0
+ },
+ {
+  "id": "P17",
+  "type": "poster",
+  "where": "Billboard building C (copy 1)",
+  "aspect": 1.657,
+  "x": 409.3,
+  "y": 89.1,
+  "z": -553.6,
+  "distanceFromCentre": 680.4
+ },
+ {
+  "id": "P18",
+  "type": "poster",
+  "where": "Billboard building A (copy 3)",
+  "aspect": 0.333,
+  "x": 223.7,
+  "y": 67.7,
+  "z": -99.4,
+  "distanceFromCentre": 240.9
+ },
+ {
+  "id": "P19",
+  "type": "poster",
+  "where": "Billboard building A (copy 3)",
+  "aspect": 0.586,
+  "x": 198.1,
+  "y": 53.1,
+  "z": -62.7,
+  "distanceFromCentre": 205.0
+ },
+ {
+  "id": "P20",
+  "type": "poster",
+  "where": "Billboard building C (copy 1)",
+  "aspect": 0.5,
+  "x": 440.6,
+  "y": 46.3,
+  "z": -499.1,
+  "distanceFromCentre": 658.2
+ },
+ {
+  "id": "P21",
+  "type": "poster",
+  "where": "Billboard building C (copy 2)",
+  "aspect": 0.321,
+  "x": 218.3,
+  "y": 22.6,
+  "z": 161.5,
+  "distanceFromCentre": 277.6
+ },
+ {
+  "id": "P22",
+  "type": "poster",
+  "where": "Billboard building A (copy 1)",
+  "aspect": 4.75,
+  "x": 145.3,
+  "y": 21.2,
+  "z": 92.3,
+  "distanceFromCentre": 177.7
+ },
+ {
+  "id": "P23",
+  "type": "poster",
+  "where": "Floor crossing A (copy 1)",
+  "aspect": 0.381,
+  "x": -78.7,
+  "y": 0.0,
+  "z": -113.2,
+  "distanceFromCentre": 129.8
+ },
+ {
+  "id": "P24",
+  "type": "poster",
+  "where": "Ramp building (copy 2)",
+  "aspect": 0.241,
+  "x": 153.5,
+  "y": 45.0,
+  "z": 21.0,
+  "distanceFromCentre": 156.6
+ },
+ {
+  "id": "P25",
+  "type": "poster",
+  "where": "Ramp building (copy 1)",
+  "aspect": 0.241,
+  "x": -64.2,
+  "y": 30.3,
+  "z": -69.4,
+  "distanceFromCentre": 87.5
+ },
+ {
+  "id": "P26",
+  "type": "poster",
+  "where": "Floating cube",
+  "aspect": 1.0,
+  "x": -99.2,
+  "y": 79.5,
+  "z": 3.2,
+  "distanceFromCentre": 100.1
+ },
+ {
+  "id": "V01",
+  "type": "video",
+  "where": "Billboard building B (copy 1)",
+  "aspect": 2.72,
+  "x": 45.2,
+  "y": 100.8,
+  "z": 61.7,
+  "distanceFromCentre": 84.8
+ },
+ {
+  "id": "V02",
+  "type": "video",
+  "where": "Long wall (copy 2)",
+  "aspect": 2.444,
+  "x": -92.2,
+  "y": 35.1,
+  "z": 108.7,
+  "distanceFromCentre": 150.3
+ },
+ {
+  "id": "V03",
+  "type": "video",
+  "where": "Barrier (copy 1)",
+  "aspect": 3.822,
+  "x": 187.9,
+  "y": 88.2,
+  "z": 32.8,
+  "distanceFromCentre": 192.7
+ },
+ {
+  "id": "V04",
+  "type": "video",
+  "where": "Barrier (copy 2)",
+  "aspect": 3.822,
+  "x": -190.5,
+  "y": 33.4,
+  "z": -20.9,
+  "distanceFromCentre": 190.8
+ },
+ {
+  "id": "V05",
+  "type": "video",
+  "where": "Ramp building (copy 2)",
+  "aspect": 3.187,
+  "x": 150.2,
+  "y": 10.6,
+  "z": -53.0,
+  "distanceFromCentre": 156.3
+ },
+ {
+  "id": "V06",
+  "type": "video",
+  "where": "Ramp building (copy 1)",
+  "aspect": 1.874,
+  "x": -57.5,
+  "y": 10.3,
+  "z": -99.1,
+  "distanceFromCentre": 106.1
+ },
+ {
+  "id": "V07",
+  "type": "video",
+  "where": "Billboard building C (copy 1)",
+  "aspect": 1.588,
+  "x": 536.0,
+  "y": 24.0,
+  "z": -434.4,
+  "distanceFromCentre": 683.7
+ },
+ {
+  "id": "V08",
+  "type": "video",
+  "where": "Ramp building (copy 1)",
+  "aspect": 2.316,
+  "x": -43.5,
+  "y": 11.2,
+  "z": -84.0,
+  "distanceFromCentre": 85.9
+ },
+ {
+  "id": "V09",
+  "type": "video",
+  "where": "Billboard building A (copy 1)",
+  "aspect": 2.182,
+  "x": 127.1,
+  "y": 14.5,
+  "z": 58.5,
+  "distanceFromCentre": 144.4
+ },
+ {
+  "id": "V10",
+  "type": "video",
+  "where": "Long wall (copy 3)",
+  "aspect": 2.444,
+  "x": 171.9,
+  "y": 27.4,
+  "z": -181.2,
+  "distanceFromCentre": 242.6
+ }
+]

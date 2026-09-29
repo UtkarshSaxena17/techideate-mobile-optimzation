@@ -23003,7 +23003,8 @@ Reason: ${e.reason}`), N0(t), this._isDeviceLost = !0
         this._initialized === !1 && await this.init(), this._textures.updateTexture(e)
     }
     initTexture(e) {
-        this._initialized === !1 && x0("Renderer: .initTexture() called before the backend is initialized. Try using .initTextureAsync() instead."), this._textures.updateTexture(e)
+        if (this._initialized === !1 || this._textures == null) return;
+        this._textures.updateTexture(e)
     }
     copyFramebufferToTexture(e, t = null) {
         if (t !== null)
@@ -60005,7 +60006,26 @@ class T60 extends pe {
         document.body.classList.remove("glhover")
     }
 }
-const M60 = JSON.parse(`[{"url": "/events", "classname": "light", "title": "HackSprint \\n 24", "subtitle": "24-hour flagship hackathon", "tags": "[ DAY 1-2 / 24 HRS / TEAMS OF 2-4 ]", "description": "Build / Ship / Demo", "video": "akira.mp4", "short": "HackSprint", "infos": {"text": "Our flagship 24-hour hackathon. Pick a real-world problem statement, form a team of 2 to 4, and build a working prototype overnight. Mentors are on the floor all night, and the final demos are judged by industry experts. Food, power and Wi-Fi are on us."}}, {"url": "/events", "classname": "light", "title": "Code Clash", "subtitle": "Competitive programming contest", "tags": "[ DAY 1 / 3 HRS / SOLO ]", "description": "Algorithms / Speed / Logic", "video": "akira.mp4", "short": "Code Clash", "infos": {"text": "A timed competitive programming contest with problems ranging from warm-up to brutal. Solve as many as you can in three hours on a live leaderboard. Open to all years, and any language is allowed."}}, {"url": "/events", "classname": "light", "title": "RoboWars", "subtitle": "Robot combat arena", "tags": "[ DAY 2 / ARENA / TEAMS ]", "description": "Hardware / Combat / Control", "video": "akira.mp4", "short": "RoboWars", "infos": {"text": "Design, build and drive a combat robot into the arena. Knockout rounds, weight-class rules and a crowd that gets loud. Bring your own bot and check the rulebook for size and weapon limits."}}, {"url": "/events", "classname": "light", "title": "Capture \\n The Flag", "subtitle": "Cybersecurity challenge", "tags": "[ DAY 2 / 6 HRS / TEAMS OF 3 ]", "description": "Security / Crypto / Forensics", "video": "akira.mp4", "short": "CTF", "infos": {"text": "A jeopardy-style CTF covering web, crypto, reverse engineering and forensics. Find the flags, climb the scoreboard and learn how attackers think. Beginner-friendly tracks are included."}}, {"url": "/events", "classname": "light", "title": "AI Arena", "subtitle": "Machine learning challenge", "tags": "[ DAY 2 / 5 HRS / TEAMS OF 2 ]", "description": "AI / ML / Data", "video": "akira.mp4", "short": "AI Arena", "infos": {"text": "You get a dataset and a brief at the start. Train, tune and explain a model before time runs out. Scoring balances accuracy with how well you can justify your approach to the judges."}}, {"url": "/events", "classname": "light", "title": "Design Dash", "subtitle": "UI / UX design sprint", "tags": "[ DAY 3 / 4 HRS / SOLO OR DUO ]", "description": "Design / UX / Prototype", "video": "akira.mp4", "short": "Design Dash", "infos": {"text": "A rapid product design sprint. Get a user problem, research it, wireframe it and present a clickable prototype. Judged on clarity, usability and craft."}}, {"url": "/events", "classname": "light", "title": "IdeaForge", "subtitle": "Startup pitch & ideathon", "tags": "[ DAY 3 / PITCH / TEAMS ]", "description": "Ideate / Pitch / Launch", "video": "akira.mp4", "short": "IdeaForge", "infos": {"text": "The heart of TECHIDEATE: turn an idea into a pitch. Teams present to a panel of founders and investors, with five minutes to pitch and five for questions. The best ideas get incubation support."}}, {"url": "/events", "classname": "light", "title": "Tech Talks", "subtitle": "Speaker sessions & workshops", "tags": "[ DAY 1-3 / MAIN AUDITORIUM ]", "description": "Talks / Workshops / Networking", "video": "akira.mp4", "short": "Tech Talks", "infos": {"text": "Sessions and hands-on workshops from engineers, researchers and founders across the three days. Open to everyone, no registration needed. Just walk in."}}]`),
+const M60 = (function () {
+    var fallback = JSON.parse(`[{"url": "/events", "classname": "light", "title": "HackSprint \\n 24", "subtitle": "24-hour flagship hackathon", "tags": "[ DAY 1-2 / 24 HRS / TEAMS OF 2-4 ]", "description": "Build / Ship / Demo", "video": "akira.mp4", "short": "HackSprint", "infos": {"text": "Our flagship 24-hour hackathon. Pick a real-world problem statement, form a team of 2 to 4, and build a working prototype overnight. Mentors are on the floor all night, and the final demos are judged by industry experts. Food, power and Wi-Fi are on us."}}, {"url": "/events", "classname": "light", "title": "Code Clash", "subtitle": "Competitive programming contest", "tags": "[ DAY 1 / 3 HRS / SOLO ]", "description": "Algorithms / Speed / Logic", "video": "akira.mp4", "short": "Code Clash", "infos": {"text": "A timed competitive programming contest with problems ranging from warm-up to brutal. Solve as many as you can in three hours on a live leaderboard. Open to all years, and any language is allowed."}}, {"url": "/events", "classname": "light", "title": "RoboWars", "subtitle": "Robot combat arena", "tags": "[ DAY 2 / ARENA / TEAMS ]", "description": "Hardware / Combat / Control", "video": "akira.mp4", "short": "RoboWars", "infos": {"text": "Design, build and drive a combat robot into the arena. Knockout rounds, weight-class rules and a crowd that gets loud. Bring your own bot and check the rulebook for size and weapon limits."}}, {"url": "/events", "classname": "light", "title": "Capture \\n The Flag", "subtitle": "Cybersecurity challenge", "tags": "[ DAY 2 / 6 HRS / TEAMS OF 3 ]", "description": "Security / Crypto / Forensics", "video": "akira.mp4", "short": "CTF", "infos": {"text": "A jeopardy-style CTF covering web, crypto, reverse engineering and forensics. Find the flags, climb the scoreboard and learn how attackers think. Beginner-friendly tracks are included."}}, {"url": "/events", "classname": "light", "title": "AI Arena", "subtitle": "Machine learning challenge", "tags": "[ DAY 2 / 5 HRS / TEAMS OF 2 ]", "description": "AI / ML / Data", "video": "akira.mp4", "short": "AI Arena", "infos": {"text": "You get a dataset and a brief at the start. Train, tune and explain a model before time runs out. Scoring balances accuracy with how well you can justify your approach to the judges."}}, {"url": "/events", "classname": "light", "title": "Design Dash", "subtitle": "UI / UX design sprint", "tags": "[ DAY 3 / 4 HRS / SOLO OR DUO ]", "description": "Design / UX / Prototype", "video": "akira.mp4", "short": "Design Dash", "infos": {"text": "A rapid product design sprint. Get a user problem, research it, wireframe it and present a clickable prototype. Judged on clarity, usability and craft."}}, {"url": "/events", "classname": "light", "title": "IdeaForge", "subtitle": "Startup pitch & ideathon", "tags": "[ DAY 3 / PITCH / TEAMS ]", "description": "Ideate / Pitch / Launch", "video": "akira.mp4", "short": "IdeaForge", "infos": {"text": "The heart of TECHIDEATE: turn an idea into a pitch. Teams present to a panel of founders and investors, with five minutes to pitch and five for questions. The best ideas get incubation support."}}, {"url": "/events", "classname": "light", "title": "Tech Talks", "subtitle": "Speaker sessions & workshops", "tags": "[ DAY 1-3 / MAIN AUDITORIUM ]", "description": "Talks / Workshops / Networking", "video": "akira.mp4", "short": "Tech Talks", "infos": {"text": "Sessions and hands-on workshops from engineers, researchers and founders across the three days. Open to everyone, no registration needed. Just walk in."}}]`);
+    try {
+        var x = new XMLHttpRequest();
+        x.open("GET", "/screens/screens.json?v=" + Date.now(), !1), x.send(null);
+        if (x.status >= 200 && x.status < 300) {
+            var cfg = JSON.parse(x.responseText), m = (cfg.majorEvents || []).filter(function (e) { return e && e.name; });
+            if (m.length) {
+                var list = m.map(function (e) {
+                    var nm = String(e.name), t = nm.length > 11 && nm.indexOf(" ") > 0 ? nm.replace(" ", " \n ") : nm;
+                    return { url: e.registerUrl || "/events", classname: "light", title: t, subtitle: e.club || "",
+                        tags: e.tags || "[ " + (e.date || "") + " / " + (e.time || "") + " ]", description: e.description || "",
+                        video: e.video ? "/screens/" + e.video : "akira.mp4", short: e.short || nm, infos: { text: e.details || e.description || "" } };
+                });
+                return list;
+            }
+        }
+    } catch (err) { console.warn("[TECHIDEATE] events slider: using built-in list", err); }
+    return fallback;
+})(),
     A9 = {
         content: M60
     },
@@ -60073,7 +60093,7 @@ class P60 extends Te {
         const s = document.createElement("video");
         s.crossOrigin = "anonymous";
         let n = t.video;
-        eT ? n = QS + t.video : n = "./videos/" + n, cU && t.video !== "akira.mp4" ? s.src = n.replace(".mp4", ".webm") : s.src = n, s.loop = !0, s.muted = !0, s.setAttribute("playsinline", ""), s.playsInline = !0;
+        t.video.charAt(0) === "/" ? s.src = t.video : (eT ? n = QS + t.video : n = "./videos/" + n, cU && t.video !== "akira.mp4" ? s.src = n.replace(".mp4", ".webm") : s.src = n), s.loop = !0, s.muted = !0, s.setAttribute("playsinline", ""), s.playsInline = !0;
         const a = new EA(s);
         let o = !1;
         return s.addEventListener("canplay", () => {
@@ -60097,7 +60117,22 @@ class P60 extends Te {
             i && i.paused && (Y0 && Hb && (document.body.appendChild(i), i.style.width = "5px", i.style.height = "5px"), i.play().catch(console.warn))
         })
     }
+    initTeamVideo() {
+        if (this.teamVideo) return;
+        const s = document.createElement("video");
+        s.crossOrigin = "anonymous", s.src = (eT ? QS : "./videos/") + "akira.mp4", s.loop = !0, s.muted = !0, s.setAttribute("playsinline", ""), s.playsInline = !0;
+        const a = new EA(s);
+        a.minFilter = P1, a.magFilter = P1, a.generateMipmaps = !1, a.colorSpace = R1, this.teamVideo = s, this.teamTexture = a;
+        s.addEventListener("canplay", () => { a.loaded = !0, this.showTeamVideo() }), s.load()
+    }
+    showTeamVideo() {
+        if (!this.idleMode) return;
+        const t = this.teamTexture && this.teamTexture.loaded ? this.teamTexture : this.videoLoadingTexture;
+        t && (this.material.videoMap = t, this.material.videoMap2 = t, this.material.transition = 0, this.material.isTransitionning = 0);
+        this.activeVideoIndices.clear(), this.pauseInactiveVideos(), this.teamVideo && this.teamVideo.paused && this.teamVideo.play().catch(console.warn)
+    }
     updateVideoTextures(t, i) {
+        if (this.idleMode) { this._cacheCurrentIndex = t, this._cacheNextIndex = i; return }
         this.loadVideoIfNeeded(t), this.loadVideoIfNeeded(i);
         const s = this.videoTextureCache.get(t),
             n = this.videoTextureCache.get(i);
@@ -60107,10 +60142,10 @@ class P60 extends Te {
         switch (this.material.intensity = 1, t) {
             case T0.VOID:
             case T0.IDLE:
-                this.desactivateWork();
+                this.desactivateWork(), this.idleMode = !0, this.initTeamVideo(), this.showTeamVideo();
                 break;
             case T0.WORKS:
-                this.material.intensity = .5, this.activateWork(), this.text.show(this.currentProjectIndex, -1, !0);
+                this.idleMode = !1, this.teamVideo && this.teamVideo.pause(), this.material.intensity = .5, this.activateWork(), this.updateVideoTextures(this.currentProjectIndex, (this.currentProjectIndex + 1) % this.contentLength), this.text.show(this.currentProjectIndex, -1, !0);
                 break;
             case T0.INFO:
                 this.material.intensity = 1, this.text && (this.remove(this.text), this.text.reset())
@@ -60161,7 +60196,8 @@ class P60 extends Te {
         this.currentDirection = -1, this.transitionToProject(-1, s)
     }
     keyDown(t) {
-        t.code === "ArrowLeft" || t.code === "KeyQ" || t.code === "Home" || t.code === "PageUp" ? this.transitionToProject(-1) : (t.code === "ArrowRight" || t.code === "KeyD" || t.code === "End" || t.code === "PageDown") && this.transitionToProject(1)
+        (t.code === "Home" || t.code === "End" || t.code === "PageUp" || t.code === "PageDown") && t.preventDefault && t.preventDefault();
+        t.code === "ArrowLeft" || t.code === "KeyQ" || t.code === "End" || t.code === "PageDown" ? this.transitionToProject(-1) : (t.code === "ArrowRight" || t.code === "KeyD" || t.code === "Home" || t.code === "PageUp") && this.transitionToProject(1)
     }
     addEvents() {
         this.updateEvent == null && (this.updateEvent = this.update.bind(this), Z.on(Y.PRE_UPDATE, this.updateEvent)), this.keydownEvent == null && (this.keyDownEvent = this.keyDown.bind(this), Z.on(Y.KEY_DOWN, this.keyDownEvent)), this.text.addEvents()
@@ -64097,6 +64133,7 @@ class bu0 extends U8 {
     }
 }
 const Q0 = new bu0;
+window.__techiPlayer = () => Q0.avatar ? Q0.avatar.position : null;
 class _u0 extends Te {
     constructor() {
         super(), this.position.copy(Le), this.position.z += 30, this.position.y += -5, this.scale.set(8, 8, 8), this.visible = !1
@@ -64725,6 +64762,19 @@ class Bu0 {
     }
     constructItems(e, t = {}) {
         this.desinterleave(e.geometry), t.containsCollision && this.desinterleave(t.containsCollision.geometry);
+        if (/^slot_[VP]\d+_\d+_screen/.test(e.name)) {
+            const sp = e.name.split("_"), sid = sp[1], asp = parseInt(sp[2]) / 1e3, om = e.material.map,
+                big = sid[0] === "V" ? (Y0 ? 448 : 640) : (Y0 ? 512 : 768), cv = document.createElement("canvas");
+            asp >= 1 ? (cv.width = big, cv.height = Math.max(8, Math.round(big / asp))) : (cv.height = big, cv.width = Math.max(8, Math.round(big * asp)));
+            const cx = cv.getContext("2d");
+            cx.fillStyle = "#06122a", cx.fillRect(0, 0, cv.width, cv.height), cx.fillStyle = "#00a8ff", cx.textAlign = "center", cx.textBaseline = "middle",
+                cx.font = "900 " + Math.round(Math.min(cv.width, cv.height) * .16) + "px Arial", cx.fillText("TECHIDEATE", cv.width / 2, cv.height / 2, cv.width * .9);
+            const nt = new om.constructor(cv);
+            nt.flipY = !1, nt.colorSpace = om.colorSpace, nt.wrapS = om.wrapS, nt.wrapT = om.wrapT, nt.magFilter = om.magFilter, nt.minFilter = om.magFilter, nt.generateMipmaps = !1, nt.needsUpdate = !0;
+            e.material = e.material.clone(), e.material.map = nt;
+            window.__techiSlots = window.__techiSlots || {}, window.__techiSlots[sid] = { id: sid, aspect: asp, texture: nt, canvas: cv, ctx: cx };
+            window.dispatchEvent(new CustomEvent("techideate-slot", { detail: sid }))
+        }
         var i, s = [];
         s.push(nf), L1.initTexture(e.material.map), i = new s6({
             plugins: s,
@@ -64782,705 +64832,7 @@ class Bu0 {
         this.instances = {}
     }
 }
-const ku0 = {
-        block_0: [{
-            position: {
-                x: 122.64507618310068,
-                y: 1.1023043582021828,
-                z: 85.15571011356235
-            },
-            rotation: {
-                x: 1224646799147353e-31,
-                y: -1.5707963267948966,
-                z: 0
-            },
-            scale: {
-                x: 1.81155205965084,
-                y: 1.81155205965084,
-                z: 1.81155205965084
-            }
-        }, {
-            position: {
-                x: -407.9880353562231,
-                y: 0,
-                z: -817.3262787281387
-            },
-            rotation: {
-                x: 12246467991473532e-32,
-                y: 1.5707963267948974,
-                z: -12246467991473527e-32
-            },
-            scale: {
-                x: 8.235479798626157,
-                y: 8.235479798626157,
-                z: 8.235479798626157
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 210.6739156493578,
-                y: 0,
-                z: -102.56121509627326
-            },
-            rotation: {
-                x: 12246467991473532e-32,
-                y: -3.1415926535897927,
-                z: -1224646799147353e-31
-            },
-            scale: {
-                x: 3.045562261750564,
-                y: 3.045562261750564,
-                z: 3.045562261750564
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        block_1: [{
-            position: {
-                x: 50.77762236068435,
-                y: 0,
-                z: 122.2476971825742
-            },
-            rotation: {
-                x: 0,
-                y: 566553889764798e-30,
-                z: 0
-            },
-            scale: {
-                x: 2.1209411968455627,
-                y: 2.1209411968455627,
-                z: 2.1209411968455627
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -770.3376214539413,
-                y: 0,
-                z: -377.06263843456895
-            },
-            rotation: {
-                x: 0,
-                y: 6890185696795333e-31,
-                z: 0
-            },
-            scale: {
-                x: 6.723585735718659,
-                y: 6.723585735718659,
-                z: 6.723585735718659
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 350.67235029355265,
-                y: 0,
-                z: -279.06551677044615
-            },
-            rotation: {
-                x: 0,
-                y: 1.5707963267948972,
-                z: 0
-            },
-            scale: {
-                x: 1.7889000462240103,
-                y: 1.7889000462240103,
-                z: 1.7889000462240103
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -287.123075635336,
-                y: 0,
-                z: 40.40007268962607
-            },
-            rotation: {
-                x: 0,
-                y: -3.1415926535897927,
-                z: 0
-            },
-            scale: {
-                x: 2.8395482685337035,
-                y: 2.8395482685337035,
-                z: 2.8395482685337035
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        block_2: [{
-            position: {
-                x: 515.8554216052034,
-                y: 0,
-                z: -401.9674688463765
-            },
-            rotation: {
-                x: 0,
-                y: -3.1415926535897927,
-                z: 0
-            },
-            scale: {
-                x: 6.321073608329018,
-                y: 6.321073608329018,
-                z: 6.321073608329018
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 185.12480422069063,
-                y: 1.1023043582021828,
-                z: 141.172597994848
-            },
-            rotation: {
-                x: 0,
-                y: 1.570796326794897,
-                z: 0
-            },
-            scale: {
-                x: 2.2281042820858934,
-                y: 2.2281042820858934,
-                z: 2.2281042820858934
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -539.3204720796214,
-                y: 0,
-                z: 597.056293337668
-            },
-            rotation: {
-                x: 0,
-                y: 1.570796326794897,
-                z: 0
-            },
-            scale: {
-                x: 6.321073608329018,
-                y: 6.321073608329018,
-                z: 6.321073608329018
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        distributor_0: [],
-        distributor_1: [{
-            position: {
-                x: 148.64804401457675,
-                y: 0,
-                z: -99.37218873819913
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 1.6756748280814642,
-                y: 1.6756748280814642,
-                z: 1.6756748280814642
-            },
-            scriptData: {
-                id: "fefe",
-                class: ""
-            }
-        }],
-        garbage: [{
-            position: {
-                x: 20,
-                y: 0,
-                z: 300
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 1,
-                y: 1,
-                z: 1
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        crossing_0: [{
-            position: {
-                x: -78.68719402070838,
-                y: .022073108563667176,
-                z: -113.22521267652638
-            },
-            rotation: {
-                x: 1224646799147353e-31,
-                y: 3.141592653589793,
-                z: -12246467991473532e-32
-            },
-            scale: {
-                x: 1.0279713370300247,
-                y: 1.0279713370300247,
-                z: 1.0279713370300247
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 163.80602550551788,
-                y: .022073108563667176,
-                z: -96.24748738182397
-            },
-            rotation: {
-                x: 3.141592653589793,
-                y: -12246467991473532e-32,
-                z: 3.141592653589793
-            },
-            scale: {
-                x: 1.0279713370300247,
-                y: 1.0279713370300247,
-                z: 1.0279713370300247
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        crossing_1: [{
-            position: {
-                x: -435.9859396773644,
-                y: .12459534759021196,
-                z: -628.8338932713672
-            },
-            rotation: {
-                x: 0,
-                y: 1.5707963267948963,
-                z: 0
-            },
-            scale: {
-                x: 8.582631935123043,
-                y: 8.582631935123043,
-                z: 8.582631935123043
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -149.11670157766298,
-                y: .12459534759021196,
-                z: -126.69615090774289
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 3.857029179857998,
-                y: 3.857029179857998,
-                z: 3.857029179857998
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        tower: [{
-            position: {
-                x: 136.9620875153425,
-                y: 0,
-                z: -183.58189959922944
-            },
-            rotation: {
-                x: 0,
-                y: -3.141592653589793,
-                z: 0
-            },
-            scale: {
-                x: 1.5848322652962055,
-                y: 1.5848322652962055,
-                z: 1.5848322652962055
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -110.78220778191098,
-                y: 0,
-                z: 3.023227684469248
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 2.2969528419827143,
-                y: 2.2969528419827143,
-                z: 2.2969528419827143
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        map: [{
-            position: {
-                x: -617.4490947798187,
-                y: 0,
-                z: -731.1315940924226
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 73.92193741244876,
-                y: 73.92193741244876,
-                z: 73.92193741244876
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 152.33409284978578,
-                y: 0,
-                z: 213.11842452608744
-            },
-            rotation: {
-                x: 0,
-                y: -1.5707963267948966,
-                z: 0
-            },
-            scale: {
-                x: 42.54528570982743,
-                y: 42.54528570982743,
-                z: 42.54528570982743
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        barrier: [{
-            position: {
-                x: 187.8817217031232,
-                y: 76.65232118866213,
-                z: 32.77473469918957
-            },
-            rotation: {
-                x: 0,
-                y: 24492935982947064e-32,
-                z: 0
-            },
-            scale: {
-                x: 4.984236786850859,
-                y: 4.984236786850859,
-                z: 4.984236786850859
-            }
-        }, {
-            position: {
-                x: -190.5279408034073,
-                y: 0,
-                z: -20.86937789890905
-            },
-            rotation: {
-                x: 0,
-                y: -3.1415926535897927,
-                z: 0
-            },
-            scale: {
-                x: 14.441237743177265,
-                y: 14.441237743177265,
-                z: 14.441237743177265
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        wall_0: [{
-            position: {
-                x: 350.39706861155526,
-                y: 0,
-                z: -240.9965981903252
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: -3.1415926535897927,
-                z: 25407181807811912e-49
-            },
-            scale: {
-                x: 3.210884086486276,
-                y: 3.210884086486276,
-                z: 3.210884086486276
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -92.22313058863483,
-                y: -7.255626091194827,
-                z: 108.66026628332179
-            },
-            rotation: {
-                x: 3.141592653589793,
-                y: -12246467991473532e-32,
-                z: 3.141592653589793
-            },
-            scale: {
-                x: 4.959761885577598,
-                y: 4.959761885577598,
-                z: 4.959761885577598
-            }
-        }, {
-            position: {
-                x: 171.93379453203713,
-                y: 0,
-                z: -181.16419344140024
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: -1.5707963267948966,
-                z: 0
-            },
-            scale: {
-                x: 3.210884086486276,
-                y: 3.210884086486276,
-                z: 3.210884086486276
-            }
-        }, {
-            position: {
-                x: -412.21829572060096,
-                y: 0,
-                z: 56.144043966682204
-            },
-            rotation: {
-                x: 1224646799147353e-31,
-                y: -3.1415926535897927,
-                z: 9338873548015653e-48
-            },
-            scale: {
-                x: 8.13487293059214,
-                y: 8.13487293059214,
-                z: 8.13487293059214
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 228.09674529681644,
-                y: 0,
-                z: -240.9965981903252
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: -3.1415926535897927,
-                z: 25407181807811912e-49
-            },
-            scale: {
-                x: 3.210884086486276,
-                y: 3.210884086486276,
-                z: 3.210884086486276
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -592.4407566624343,
-                y: 0,
-                z: -240.9965981903252
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: 1.5707963267948974,
-                z: 2465190328815662e-47
-            },
-            scale: {
-                x: 9.83127228834367,
-                y: 9.83127228834367,
-                z: 9.83127228834367
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: -592.4407566624343,
-                y: 0,
-                z: 125.78335559529745
-            },
-            rotation: {
-                x: 12246467991473527e-32,
-                y: 1.5707963267948974,
-                z: 2465190328815662e-47
-            },
-            scale: {
-                x: 9.83127228834367,
-                y: 9.83127228834367,
-                z: 9.83127228834367
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        mac: [{
-            position: {
-                x: -108.26343399537812,
-                y: 79.54857661997863,
-                z: 3.206631040088915
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 1.8112929583579782,
-                y: 1.8112929583579782,
-                z: 1.8112929583579782
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        buildingramp: [{
-            position: {
-                x: -71.62095503249753,
-                y: 0,
-                z: -72.32933616140122
-            },
-            rotation: {
-                x: 0,
-                y: 1.5707963267948963,
-                z: 0
-            },
-            scale: {
-                x: 1.5250555724861008,
-                y: 1.5250555724861008,
-                z: 1.5250555724861008
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }, {
-            position: {
-                x: 157.83433931082718,
-                y: 0,
-                z: -11.638325924111996
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 2.268825418245307,
-                y: 2.268825418245307,
-                z: 2.268825418245307
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        samsy_logo: [{
-            position: {
-                x: 364.8736571584327,
-                y: 0,
-                z: 742.3749479423003
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 2.099256221158518,
-                y: 2.099256221158518,
-                z: 2.099256221158518
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }],
-        nintendo: [{
-            position: {
-                x: 340,
-                y: 0,
-                z: 300
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 1,
-                y: 1,
-                z: 1
-            }
-        }],
-        notnyc_logo: [{
-            position: {
-                x: 237.5595559872777,
-                y: 109.94307804814817,
-                z: 130.3708251248988
-            },
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            },
-            scale: {
-                x: 4.8156839236691775,
-                y: 4.8156839236691775,
-                z: 4.8156839236691775
-            },
-            scriptData: {
-                id: "",
-                class: ""
-            }
-        }]
-    },
+const ku0 = {"distributor_0": [], "distributor_1": [{"position": {"x": 148.64804401457675, "y": 0, "z": -99.37218873819913}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 1.6756748280814642, "y": 1.6756748280814642, "z": 1.6756748280814642}, "scriptData": {"id": "fefe", "class": ""}}], "garbage": [{"position": {"x": 20, "y": 0, "z": 300}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 1, "y": 1, "z": 1}, "scriptData": {"id": "", "class": ""}}], "mac": [{"position": {"x": -108.26343399537812, "y": 79.54857661997863, "z": 3.206631040088915}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 1.8112929583579782, "y": 1.8112929583579782, "z": 1.8112929583579782}, "scriptData": {"id": "", "class": ""}}], "samsy_logo": [{"position": {"x": 364.8736571584327, "y": 0, "z": 742.3749479423003}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 2.099256221158518, "y": 2.099256221158518, "z": 2.099256221158518}, "scriptData": {"id": "", "class": ""}}], "nintendo": [{"position": {"x": 340, "y": 0, "z": 300}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 1, "y": 1, "z": 1}}], "notnyc_logo": [{"position": {"x": 237.5595559872777, "y": 109.94307804814817, "z": 130.3708251248988}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 4.8156839236691775, "y": 4.8156839236691775, "z": 4.8156839236691775}, "scriptData": {"id": "", "class": ""}}], "block_0__1": [{"position": {"x": 122.64507618310068, "y": 1.1023043582021828, "z": 85.15571011356235}, "rotation": {"x": 1.224646799147353e-16, "y": -1.5707963267948966, "z": 0}, "scale": {"x": 1.81155205965084, "y": 1.81155205965084, "z": 1.81155205965084}}], "block_0__2": [{"position": {"x": -407.9880353562231, "y": 0, "z": -817.3262787281387}, "rotation": {"x": 1.2246467991473532e-16, "y": 1.5707963267948974, "z": -1.2246467991473527e-16}, "scale": {"x": 8.235479798626157, "y": 8.235479798626157, "z": 8.235479798626157}, "scriptData": {"id": "", "class": ""}}], "block_0__3": [{"position": {"x": 210.6739156493578, "y": 0, "z": -102.56121509627326}, "rotation": {"x": 1.2246467991473532e-16, "y": -3.1415926535897927, "z": -1.224646799147353e-16}, "scale": {"x": 3.045562261750564, "y": 3.045562261750564, "z": 3.045562261750564}, "scriptData": {"id": "", "class": ""}}], "block_1__1": [{"position": {"x": 50.77762236068435, "y": 0, "z": 122.2476971825742}, "rotation": {"x": 0, "y": 5.66553889764798e-16, "z": 0}, "scale": {"x": 2.1209411968455627, "y": 2.1209411968455627, "z": 2.1209411968455627}, "scriptData": {"id": "", "class": ""}}], "block_1__2": [{"position": {"x": -770.3376214539413, "y": 0, "z": -377.06263843456895}, "rotation": {"x": 0, "y": 6.890185696795333e-16, "z": 0}, "scale": {"x": 6.723585735718659, "y": 6.723585735718659, "z": 6.723585735718659}, "scriptData": {"id": "", "class": ""}}], "block_1__3": [{"position": {"x": 350.67235029355265, "y": 0, "z": -279.06551677044615}, "rotation": {"x": 0, "y": 1.5707963267948972, "z": 0}, "scale": {"x": 1.7889000462240103, "y": 1.7889000462240103, "z": 1.7889000462240103}, "scriptData": {"id": "", "class": ""}}], "block_1__4": [{"position": {"x": -287.123075635336, "y": 0, "z": 40.40007268962607}, "rotation": {"x": 0, "y": -3.1415926535897927, "z": 0}, "scale": {"x": 2.8395482685337035, "y": 2.8395482685337035, "z": 2.8395482685337035}, "scriptData": {"id": "", "class": ""}}], "block_2__1": [{"position": {"x": 515.8554216052034, "y": 0, "z": -401.9674688463765}, "rotation": {"x": 0, "y": -3.1415926535897927, "z": 0}, "scale": {"x": 6.321073608329018, "y": 6.321073608329018, "z": 6.321073608329018}, "scriptData": {"id": "", "class": ""}}], "block_2__2": [{"position": {"x": 185.12480422069063, "y": 1.1023043582021828, "z": 141.172597994848}, "rotation": {"x": 0, "y": 1.570796326794897, "z": 0}, "scale": {"x": 2.2281042820858934, "y": 2.2281042820858934, "z": 2.2281042820858934}, "scriptData": {"id": "", "class": ""}}], "block_2__3": [{"position": {"x": -539.3204720796214, "y": 0, "z": 597.056293337668}, "rotation": {"x": 0, "y": 1.570796326794897, "z": 0}, "scale": {"x": 6.321073608329018, "y": 6.321073608329018, "z": 6.321073608329018}, "scriptData": {"id": "", "class": ""}}], "wall_0__1": [{"position": {"x": 350.39706861155526, "y": 0, "z": -240.9965981903252}, "rotation": {"x": 1.2246467991473527e-16, "y": -3.1415926535897927, "z": 2.5407181807811912e-33}, "scale": {"x": 3.210884086486276, "y": 3.210884086486276, "z": 3.210884086486276}, "scriptData": {"id": "", "class": ""}}], "wall_0__2": [{"position": {"x": -92.22313058863483, "y": -7.255626091194827, "z": 108.66026628332179}, "rotation": {"x": 3.141592653589793, "y": -1.2246467991473532e-16, "z": 3.141592653589793}, "scale": {"x": 4.959761885577598, "y": 4.959761885577598, "z": 4.959761885577598}}], "wall_0__3": [{"position": {"x": 171.93379453203713, "y": 0, "z": -181.16419344140024}, "rotation": {"x": 1.2246467991473527e-16, "y": -1.5707963267948966, "z": 0}, "scale": {"x": 3.210884086486276, "y": 3.210884086486276, "z": 3.210884086486276}}], "wall_0__4": [{"position": {"x": -412.21829572060096, "y": 0, "z": 56.144043966682204}, "rotation": {"x": 1.224646799147353e-16, "y": -3.1415926535897927, "z": 9.338873548015653e-33}, "scale": {"x": 8.13487293059214, "y": 8.13487293059214, "z": 8.13487293059214}, "scriptData": {"id": "", "class": ""}}], "wall_0__5": [{"position": {"x": 228.09674529681644, "y": 0, "z": -240.9965981903252}, "rotation": {"x": 1.2246467991473527e-16, "y": -3.1415926535897927, "z": 2.5407181807811912e-33}, "scale": {"x": 3.210884086486276, "y": 3.210884086486276, "z": 3.210884086486276}, "scriptData": {"id": "", "class": ""}}], "wall_0__6": [{"position": {"x": -592.4407566624343, "y": 0, "z": -240.9965981903252}, "rotation": {"x": 1.2246467991473527e-16, "y": 1.5707963267948974, "z": 2.465190328815662e-32}, "scale": {"x": 9.83127228834367, "y": 9.83127228834367, "z": 9.83127228834367}, "scriptData": {"id": "", "class": ""}}], "wall_0__7": [{"position": {"x": -592.4407566624343, "y": 0, "z": 125.78335559529745}, "rotation": {"x": 1.2246467991473527e-16, "y": 1.5707963267948974, "z": 2.465190328815662e-32}, "scale": {"x": 9.83127228834367, "y": 9.83127228834367, "z": 9.83127228834367}, "scriptData": {"id": "", "class": ""}}], "tower__1": [{"position": {"x": 136.9620875153425, "y": 0, "z": -183.58189959922944}, "rotation": {"x": 0, "y": -3.141592653589793, "z": 0}, "scale": {"x": 1.5848322652962055, "y": 1.5848322652962055, "z": 1.5848322652962055}, "scriptData": {"id": "", "class": ""}}], "tower__2": [{"position": {"x": -110.78220778191098, "y": 0, "z": 3.023227684469248}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 2.2969528419827143, "y": 2.2969528419827143, "z": 2.2969528419827143}, "scriptData": {"id": "", "class": ""}}], "map__1": [{"position": {"x": -617.4490947798187, "y": 0, "z": -731.1315940924226}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 73.92193741244876, "y": 73.92193741244876, "z": 73.92193741244876}, "scriptData": {"id": "", "class": ""}}], "map__2": [{"position": {"x": 152.33409284978578, "y": 0, "z": 213.11842452608744}, "rotation": {"x": 0, "y": -1.5707963267948966, "z": 0}, "scale": {"x": 42.54528570982743, "y": 42.54528570982743, "z": 42.54528570982743}, "scriptData": {"id": "", "class": ""}}], "barrier__1": [{"position": {"x": 187.8817217031232, "y": 76.65232118866213, "z": 32.77473469918957}, "rotation": {"x": 0, "y": 2.4492935982947064e-16, "z": 0}, "scale": {"x": 4.984236786850859, "y": 4.984236786850859, "z": 4.984236786850859}}], "barrier__2": [{"position": {"x": -190.5279408034073, "y": 0, "z": -20.86937789890905}, "rotation": {"x": 0, "y": -3.1415926535897927, "z": 0}, "scale": {"x": 14.441237743177265, "y": 14.441237743177265, "z": 14.441237743177265}, "scriptData": {"id": "", "class": ""}}], "buildingramp__1": [{"position": {"x": -71.62095503249753, "y": 0, "z": -72.32933616140122}, "rotation": {"x": 0, "y": 1.5707963267948963, "z": 0}, "scale": {"x": 1.5250555724861008, "y": 1.5250555724861008, "z": 1.5250555724861008}, "scriptData": {"id": "", "class": ""}}], "buildingramp__2": [{"position": {"x": 157.83433931082718, "y": 0, "z": -11.638325924111996}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 2.268825418245307, "y": 2.268825418245307, "z": 2.268825418245307}, "scriptData": {"id": "", "class": ""}}], "crossing_0__1": [{"position": {"x": -78.68719402070838, "y": 0.022073108563667176, "z": -113.22521267652638}, "rotation": {"x": 1.224646799147353e-16, "y": 3.141592653589793, "z": -1.2246467991473532e-16}, "scale": {"x": 1.0279713370300247, "y": 1.0279713370300247, "z": 1.0279713370300247}, "scriptData": {"id": "", "class": ""}}], "crossing_0__2": [{"position": {"x": 163.80602550551788, "y": 0.022073108563667176, "z": -96.24748738182397}, "rotation": {"x": 3.141592653589793, "y": -1.2246467991473532e-16, "z": 3.141592653589793}, "scale": {"x": 1.0279713370300247, "y": 1.0279713370300247, "z": 1.0279713370300247}, "scriptData": {"id": "", "class": ""}}], "crossing_1__1": [{"position": {"x": -435.9859396773644, "y": 0.12459534759021196, "z": -628.8338932713672}, "rotation": {"x": 0, "y": 1.5707963267948963, "z": 0}, "scale": {"x": 8.582631935123043, "y": 8.582631935123043, "z": 8.582631935123043}, "scriptData": {"id": "", "class": ""}}], "crossing_1__2": [{"position": {"x": -149.11670157766298, "y": 0.12459534759021196, "z": -126.69615090774289}, "rotation": {"x": 0, "y": 0, "z": 0}, "scale": {"x": 3.857029179857998, "y": 3.857029179857998, "z": 3.857029179857998}, "scriptData": {"id": "", "class": ""}}]},
     Fu0 = {
         kit: ku0
     },
@@ -65511,7 +64863,7 @@ class Hu0 extends pe {
         }
     }
     async preload() {
-        this.kitScene = await pi.loadKit("./models/cyberfix.glb"), this.instancer = new Bu0(this.kitScene)
+        this.kitScene = await pi.loadKit("./models/cyberfix.glb?v=screens5"), this.instancer = new Bu0(this.kitScene)
     }
     async setState(t, i) {
         switch (t) {
@@ -65560,7 +64912,7 @@ class Hu0 extends pe {
                     rotation: u.rotation,
                     scale: u.scale
                 };
-                u.scriptData != null && (c.scriptData = u.scriptData), this.instancer.items[a].spawn(c), l++
+                u.scriptData != null && (c.scriptData = u.scriptData), this.instancer.items[a] ? this.instancer.items[a].spawn(c) : console.warn("[TECHIDEATE] 3D model is missing piece \"" + a + "\" - replace public/models/cyberfix.glb with the matching version and hard refresh (Ctrl+Shift+R)"), l++
             }
             n++
         }
