@@ -29384,7 +29384,7 @@ Yi.fullydone == !0;
 Yi.debugfbo;
 const $t = Yi.editor == !0;
 Yi.stats;
-var ps = n3 ? Math.min(window.devicePixelRatio, 2) : null;
+var ps = n3 ? Math.min(window.devicePixelRatio, Y0 ? 1.5 : 2) : null;
 Yi.webwork == !0;
 const $10 = 2.7,
     Ub = 60;
